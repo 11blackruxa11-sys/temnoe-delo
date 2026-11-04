@@ -1,0 +1,19 @@
+# Тестовый запуск без настоящих платежей
+services:
+  - type: web
+    name: temnoe-delo-preview
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT --workers 1 --proxy-headers
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: APP_ENV
+        value: demo
+      - key: TD_DEMO_PAYMENTS
+        value: "1"
+      - key: TD_DB_PATH
+        value: /tmp/temnoe-demo.sqlite3
