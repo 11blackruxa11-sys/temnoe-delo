@@ -17,7 +17,7 @@
     head.insertAdjacentElement('afterend',top);top.insertAdjacentElement('afterend',featured);
     const catalog=document.createElement('div');catalog.id='cityCatalog';catalog.innerHTML='<div class="catalog-top"><button class="catalog-toggle" id="catalogToggle" aria-expanded="false">ВСЕ 40 ГОРОДОВ  ＋</button></div><div class="catalog-content" id="catalogContent"></div>';
     featured.insertAdjacentElement('afterend',catalog);const content=q('#catalogContent');content.append(cities.querySelector('.filter'),q('#cityGrid'));
-    let slide=0;const ids=[2,1,3,4,6,0,7,8,14,17,22,36,10,12,18,30,29,11];
+    let slide=0;const ids=[2,1,3,14,4,0,7,8,6,17,22,36,10,12,18,30,29,11];
     const renderFeatured=()=>{const show=Array.from({length:6},(_,i)=>CITIES[ids[(slide+i)%ids.length]]);featured.innerHTML=show.map(c=>`<button class="city-card" data-city="${c.id}" aria-label="Играть: ${htmlSafe(c.city)}"><div class="city-art">${citySVG(c.id)}</div><div class="card-info"><h3>${htmlSafe(c.city)}</h3></div></button>`).join('');};
     renderFeatured();featured.addEventListener('click',e=>{const c=e.target.closest('[data-city]');if(c)enterGame(Number(c.dataset.city))});
     q('#featuredPrev').onclick=()=>{slide=(slide+ids.length-1)%ids.length;renderFeatured()};q('#featuredNext').onclick=()=>{slide=(slide+1)%ids.length;renderFeatured()};
