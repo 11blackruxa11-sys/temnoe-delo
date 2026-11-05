@@ -1,0 +1,65 @@
+/* ГОРОДСКИЕ ДЕЛА — интерфейс игрового квеста */
+:root{--bg:#10131c;--surface:#1c1e27;--surface2:#24242b;--line:#5b4436;--gold:#ffa83f;--gold2:#ffcc82;--text:#f9efe4;--muted:#c6c0bb}
+body{font-family:'Manrope',system-ui,Arial,sans-serif;background:radial-gradient(ellipse at top,#1f2129,#101218 65%);color:#f8f0e9}
+header{height:66px;background:#12141bf4;border-bottom:1px solid #9f673b55}
+.header-inner{gap:26px}.brand{font:900 19px/1.1 'Manrope',Arial,sans-serif;letter-spacing:-.05em}.brand span{line-height:1.05}.brand small{font-size:9px;letter-spacing:.17em;color:#f6ad52;margin-top:3px}
+.nav{gap:clamp(12px,2vw,26px);font-size:13px;font-weight:650;letter-spacing:0}
+.nav button{font-size:13px;font-weight:650;letter-spacing:0;padding:18px 0;color:#ece6de;white-space:nowrap}
+.nav button.active,.nav button:hover{color:#ffbd71}.header-action{background:linear-gradient(160deg,#ffb34f,#f68a19);color:#1a1919;box-shadow:none;font-weight:900;border:1px solid #ffcb84;border-radius:9px;font-size:12px}
+.hero{min-height:660px;min-height:min(720px,84svh);padding-top:66px;border-bottom:1px solid #b36e3733}
+.hero::before{z-index:-1;background:linear-gradient(90deg,#0e1424f5 0%,#121622ed 20%,#182036b0 45%,#10182719 81%),linear-gradient(0deg,#11151e 0%,transparent 35%)}
+.hero-backdrop{opacity:.9}.hero-backdrop svg{filter:saturate(1.28) contrast(1.08)}.hero-grid{min-height:580px}
+.hero-copy{max-width:600px;padding:40px 0 115px;z-index:6}.hero-status{border:0;background:none;padding:0;font-size:12px;letter-spacing:.15em;color:#f5c78b}
+.hero-status .pulse{width:7px;height:7px}
+.hero-title{font-family:'Manrope',Arial,sans-serif;font-weight:900;font-style:italic;font-size:clamp(60px,6.8vw,110px);line-height:.94;letter-spacing:-.074em;margin:24px 0 17px;text-shadow:0 7px 20px #0007}
+.hero-title em{color:#ffa93f;font-style:italic;display:block}.hero-copy>p{max-width:460px;color:#ede5df;font-size:17px;font-weight:600;line-height:1.52;margin-bottom:26px;text-shadow:0 2px 6px #0007}
+.hero-buttons{gap:12px}.hero-buttons .btn{font-weight:850;font-size:14px;letter-spacing:.01em;padding:17px 25px;border-radius:11px;transform:skew(-5deg)}
+.hero-buttons .btn>*{transform:skew(5deg)}.btn.primary{color:#201b18;background:linear-gradient(130deg,#ffc568,#f48e1c);border:1px solid #ffc96b;box-shadow:0 8px 23px #ef852342}.btn.primary:hover{background:#ffc268;transform:translateY(-2px) skew(-5deg)}.btn.ghost{background:#11151dcc;border:1px solid #e99c49;color:#fff}
+.hero-characters{z-index:4;right:-4%;width:min(65%,860px);max-height:635px;bottom:1px;filter:drop-shadow(0 8px 18px #0b0d1688)}
+.hero-bottom{bottom:18px;justify-content:flex-end}.hero-stats{display:none}.city-switch{padding:9px 12px;border-radius:9px;border-color:#ca8c4b88;background:#151a24dc}.city-switch label{font-size:9px;color:#ffc279;letter-spacing:.08em}.city-switch strong{font-size:13px}.city-switch button{border:1px solid #ffc27966;font-size:17px;padding:6px 10px}
+.section{padding:56px 0}.section h2{font-family:'Manrope',Arial,sans-serif;font-weight:900;letter-spacing:-.05em;font-size:clamp(28px,3vw,43px);line-height:1.05}.section-header{align-items:center;margin-bottom:21px}.section-header p{max-width:470px;color:#bdb5b5;font-size:13px}.eyebrow{font-weight:800;letter-spacing:.13em;font-size:11px;color:#ffaf55}
+#cities{background:linear-gradient(#11151f,#16181f);padding-top:32px;padding-bottom:32px}
+#cities .section-header{margin-bottom:16px}
+#cities .section-header h2{margin:6px 0 0;font-size:clamp(23px,2.5vw,35px)}
+#cities .section-header p{max-width:410px;line-height:1.5}
+.featured-title{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 14px}
+.featured-title h3{font-size:12px;color:#ffc178;text-transform:uppercase;letter-spacing:.14em;margin:0;font-weight:800}
+.featured-links{display:flex;gap:8px}.round-nav{border-radius:50%;width:35px;height:35px;color:#f7bc75;background:#1a1b23;border:1px solid #9c653d;cursor:pointer}
+.featured-track{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px}
+.featured-track .city-card{border-radius:13px;border:1px solid #b87440a6;background:#1a1e28;min-width:0;box-shadow:0 11px 20px #0006;aspect-ratio:1.18;display:flex;flex-direction:column;justify-content:flex-end}
+.featured-track .city-card:hover,.featured-track .city-card:focus-visible{transform:translateY(-6px);border-color:#ffbd65;box-shadow:0 12px 20px #0008,0 0 0 1px #ffba66}
+.featured-track .city-art{position:absolute;inset:0;height:auto}
+.featured-track .city-art svg{width:100%;height:100%;filter:saturate(1.1) contrast(1.04);transition:transform .5s}
+.featured-track .city-card:hover .city-art svg{transform:scale(1.08)}
+.featured-track .city-art::after{height:75%;background:linear-gradient(0deg,#0c111de8,#12192a09)}
+.featured-track .art-tag{display:none}
+.featured-track .card-info{padding:60px 10px 13px;position:relative;z-index:2;text-align:center}
+.featured-track .card-info h3{font-family:'Manrope',Arial,sans-serif;font-size:clamp(12px,1.1vw,16px);font-weight:900;font-style:italic;letter-spacing:-.035em;margin:0;line-height:1.1;text-shadow:0 3px 6px #000}
+.featured-track .card-info p,.featured-track .card-tail{display:none}
+#cityCatalog{margin:20px 0 0}
+.catalog-top{display:flex;justify-content:center;gap:12px;align-items:center}
+.catalog-toggle{background:#24212a;border:1px solid #93623f;color:#f9c995;font-size:12px;font-weight:800;padding:11px 22px;border-radius:12px;cursor:pointer}
+.catalog-toggle:hover{background:#392b27}
+.catalog-content{display:none;margin-top:25px}.catalog-content.open{display:block}
+.catalog-content .filter{justify-content:center}.catalog-content .city-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:13px}
+.catalog-content .city-card{border-radius:13px;border-color:#89613f55}.catalog-content .city-art{height:130px}
+.catalog-content .card-info{padding:13px}.catalog-content .card-info h3{font-size:15px;font-family:'Manrope',Arial,sans-serif;font-weight:800}.catalog-content .card-info p{min-height:0;font-size:11px}.catalog-content .card-tail .pill{font-size:10px}
+#how{padding:36px 0 45px;background:radial-gradient(ellipse at 45% 0,#20212c,#101219 77%);border-top:1px solid #95592f33}
+#how h2{text-align:center;font-size:clamp(24px,2.5vw,34px);letter-spacing:-.03em;margin:5px 0 18px}
+#how .eyebrow{text-align:center}
+.steps-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:18px}
+.step-card{position:relative;padding:18px 15px 20px 16px;border-radius:14px;background:linear-gradient(150deg,#27252c,#16171e);border:1px solid #b7774670;min-height:187px}
+.step-no{position:absolute;right:12px;top:9px;color:#ffae55;font-size:13px;font-weight:900;font-style:italic}
+.step-card .step-icon{width:40px;height:42px;font-size:30px;border:0;background:none;margin:0 0 5px;color:#ffab52;filter:drop-shadow(0 0 5px #ff8a2e66)}
+.step-card h3{font-family:'Manrope',Arial,sans-serif;font-weight:900;letter-spacing:-.02em;font-size:15px;margin:7px 0 7px;line-height:1.23;color:#fff2e6}
+.step-card p{font-size:12px;line-height:1.5;color:#cfc7c2;margin:0;font-weight:500}
+.price-line{text-align:center;font-size:12px;color:#b8afb0;margin-top:18px}
+#author{background:#12151d;padding:48px 0}.author-panel{background:linear-gradient(120deg,#29242b,#171b26);border:1px solid #966b4859;padding:30px;border-radius:16px;gap:30px}.author-panel h2{font-size:clamp(27px,3.3vw,42px)}.author-panel p{font-size:13px}.chat-preview{background:#141721}
+.game-wrap{background:radial-gradient(circle at 55% 0,#3c2c2966,transparent 42%),#10131a;padding-top:100px}.game-heading h1{font-family:'Manrope',Arial,sans-serif;font-weight:900;line-height:1.08;letter-spacing:-.04em}.game-wrap .game-panel h2,.game-wrap h3{font-family:'Manrope',Arial,sans-serif;font-weight:850;letter-spacing:-.02em}.game-scene{border-color:#a1683c}
+footer{background:#111319;color:#b6b3b0}
+@media(min-width:1450px){.hero-characters{right:0;width:63%}}
+@media(max-width:1240px){.nav{gap:13px}.nav button{font-size:12px}.brand{font-size:17px}.featured-track{grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.steps-grid{gap:9px}.step-card{padding:15px 12px;min-height:196px}.step-card h3{font-size:13px}.step-card p{font-size:11px}}
+@media(max-width:980px){.featured-track{grid-template-columns:repeat(3,minmax(0,1fr))}.featured-track .city-card{aspect-ratio:1.6}.steps-grid{grid-template-columns:repeat(3,1fr)}.catalog-content .city-grid{grid-template-columns:repeat(3,1fr)}.hero-title{font-size:clamp(56px,8vw,86px)}.hero-characters{width:67%;right:-11%;bottom:0;opacity:.91}.hero-copy{max-width:58%}}
+@media(max-width:850px){header{height:65px}.nav{display:none}.header-inner{gap:12px}.header-action{font-size:10px}.hero{padding-top:65px;min-height:690px}.hero-grid{min-height:625px}.hero-copy{max-width:82%;padding:22px 0 280px}.hero-title{font-size:clamp(55px,11vw,84px)}.hero-characters{width:80%;max-height:410px;right:-17%;bottom:0}.hero-copy>p{max-width:370px;font-size:15px}.hero-bottom{bottom:9px;justify-content:flex-start}.city-switch{padding:7px 9px}.hero::before{background:linear-gradient(90deg,#0d1420e0,#121a2b63),linear-gradient(0deg,#0d131df1,transparent 32%)}.mobile-open .nav{top:65px;display:flex;background:#181821}.section{padding:43px 0}.catalog-content .city-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:590px){.brand{font-size:15px}.brand small{font-size:8px}.brand svg{width:27px;height:33px}.header-action{padding:9px 10px}.hero{min-height:680px}.hero-grid{min-height:615px}.hero-copy{max-width:100%;padding:5px 0 330px}.hero-title{font-size:clamp(57px,14vw,80px);margin:21px 0 12px}.hero-copy>p{max-width:95%;font-size:14px;line-height:1.5}.hero-buttons .btn{font-size:12px;padding:13px 14px}.hero-characters{width:118%;max-height:350px;right:-18%;bottom:22px}.city-switch{display:none}.hero-status{font-size:10px}.featured-track{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.featured-track .city-card{aspect-ratio:1.4}.featured-track .card-info h3{font-size:15px}.steps-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.step-card{min-height:173px}.step-card h3{font-size:13px}.step-card p{font-size:11px}.catalog-content .city-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.section-header{display:block}.section-header p{margin-top:10px}.author-panel{padding:22px;display:block}.chat-preview{margin-top:26px}}
+@media(prefers-reduced-motion:reduce){.city-card,.city-art svg,.hero-backdrop{transition:none!important}}
