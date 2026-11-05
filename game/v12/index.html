@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101715">
+<meta name="description" content="ТЁМНОЕ ДЕЛО — интерактивные детективные истории 40 городов России. Осматривай предметы, решай головоломки и раскрой своё дело.">
+<title>ТЁМНОЕ ДЕЛО | Городские расследования</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css?v=12.0">
+</head>
+<body>
+<div class="noise" aria-hidden="true"></div>
+<header class="header"><button class="logo" id="brand" aria-label="На главную"><span class="logo-icon"><svg viewBox="0 0 32 32" fill="none"><circle cx="13" cy="13" r="9" stroke="currentColor" stroke-width="1.8"/><path d="m20 20 9 9M13 7v7l5 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span class="logo-title">ТЁМНОЕ ДЕЛО<small>ГОРОДСКИЕ РАССЛЕДОВАНИЯ</small></span></button><nav class="nav"><button data-nav="home" class="nav-link active">Главная</button><button data-nav="cases" class="nav-link">Все дела <span id="caseTotal">40</span></button><button data-nav="guide" class="nav-link">Как играть</button></nav><div class="header-right"><span class="status-light"><i></i> ДЕМО · В ОТКРЫТОМ ДОСТУПЕ</span><button id="navPlay" class="header-cta">Начать игру <span>↗</span></button></div></header>
+<main id="app">
+<section id="home" class="home-view">
+  <div class="hero">
+    <div class="hero-art" aria-hidden="true"></div><div class="hero-dark" aria-hidden="true"></div>
+    <div class="hero-layout">
+      <div class="hero-copy"><div class="eyebrow"><span class="tiny-diamond">◆</span> НЕ ЧИТАЙ ИСТОРИЮ. РАСКРОЙ ЕЁ.</div>
+      <h1>У ГОРОДА<br>ЕСТЬ <em>ТАЙНА.</em><br>НАЙДИ ОТВЕТ.</h1>
+      <p>40 городов, 40 историй. Исследуй локации, поворачивай найденные предметы, проверяй показания и решай, что произошло на самом деле.</p>
+      <div class="hero-actions"><button id="heroPlay" class="button-primary">Начать расследование <span>↗</span></button><button id="heroBrowse" class="button-quiet">Выбрать город <span>↘</span></button></div>
+      <div class="hero-proof"><span><strong>40</strong> городских дел</span><span class="proof-divider"></span><span><strong>7</strong> глав в каждом</span><span class="proof-divider"></span><span><strong>0 ₽</strong> в демоверсии</span></div>
+      </div><img class="hero-team" src="./characters-v11.webp" alt="Команда исследователей" loading="eager">
+      <div class="hero-side"><div class="hero-side-index">ДЕЛО В ФОКУСЕ <span>01 / 40</span></div><div class="hero-side-image"><img src="../clue-photo-v6.webp" alt="Загадочный снимок для расследования"></div><strong>Невеста Семи ветров</strong><span>НОВОРОССИЙСК · ИССЛЕДОВАНИЕ</span><button id="focusPlay">Открыть дело <b>↗</b></button></div>
+    </div>
+    <div class="hero-bottom"><span>ЛИСТАЙ ДАЛЬШЕ <b>↓</b></span><span>ХУДОЖЕСТВЕННЫЕ РЕКОНСТРУКЦИИ ПО МОТИВАМ ГОРОДСКИХ ИСТОРИЙ</span></div>
+  </div>
+  <section class="featured-section"><div class="section-heading"><div><span class="eyebrow">001 / ИГРОВЫЕ ДЕЛА</span><h2>Выбери, с чего<br><em>начнётся история.</em></h2></div><button class="section-action" id="allCases">Все 40 расследований <span>↗</span></button></div><div id="featuredGrid" class="featured-grid"></div></section>
+  <section class="how-section" id="guide"><div class="how-intro"><span class="eyebrow">002 / БЕЗ СЛОЖНОГО УПРАВЛЕНИЯ</span><h2>Играть просто.<br><em>Разгадать сложнее.</em></h2></div><div class="how-steps"><div><span>01 / ОСМОТРИ</span><p>Найди предметы в сцене. Интересные места подсвечиваются мягко и ненавязчиво.</p></div><div><span>02 / ИЗУЧИ</span><p>Поверни улику, посмотри оборотную сторону, запомни важную деталь.</p></div><div><span>03 / СОПОСТАВЬ</span><p>Проверь шифр, свидетельства и хронологию. Прими своё решение.</p></div></div></section>
+</section>
+<section id="catalog" class="catalog-view hidden"><div class="catalog-top"><div><span class="eyebrow">АРХИВ / 40 ДЕЛ</span><h1>Все города.<br><em>Все тайны.</em></h1><p>Каждый город начинает своё дело с другой истории. Демонстрационные расследования открыты для тестирования.</p></div><div class="catalog-controls"><label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Найди город или историю" autocomplete="off" aria-label="Поиск города"></label><div class="filter-row" id="filters"><button data-filter="all" class="selected">Все города</button><button data-filter="started">В процессе</button><button data-filter="done">Раскрытые</button></div></div></div><div class="catalog-meta"><span id="resultsText">40 расследований</span><span>НАЖМИ НА КАРТОЧКУ, ЧТОБЫ ОТКРЫТЬ ДЕЛО</span></div><div class="catalog-grid" id="catalogGrid"></div><div class="disclaimer">События и персонажи в игровых сценах художественно переосмыслены. Городские легенды не выдаются за доказанные происшествия.</div></section>
+<section id="game" class="game-view hidden"><div class="game-bar"><div class="game-identity"><button id="gameBack" class="back-circle" aria-label="К списку городов">←</button><div><span class="eyebrow" id="gameMeta">ДЕЛО №007 · НОВОРОССИЙСК</span><strong id="gameName">Невеста Семи ветров</strong></div></div><div class="game-tools"><span class="game-save">● АВТОСОХРАНЕНИЕ</span><button id="evidenceButton" class="outline-button">Улики <span id="clueCount">0/3</span></button></div></div>
+<div class="game-shell"><aside class="chapters-panel"><span class="rail-heading">ХОД РАССЛЕДОВАНИЯ</span><div id="chapterRail" class="chapter-rail"></div><div class="chapter-help"><span>?</span><div><strong>Застрял?</strong><p>Подсказка всегда рядом. Без штрафов и таймеров.</p><button id="hintButton">Показать подсказку ↗</button></div></div></aside>
+<div class="stage-column"><div class="stage-head"><div><span id="stageCounter" class="eyebrow">ГЛАВА 01 / 07</span><h2 id="stageName">Начало расследования</h2></div><div class="stage-arrows"><button id="stagePrev" aria-label="Предыдущая глава">←</button><span id="stagePages">01 / 07</span><button id="stageNext" aria-label="Следующая глава">→</button></div></div><div class="stage-scene" id="stageScene"><div class="scene-backdrop" id="gameBackdrop"></div><div class="scene-camera" id="sceneCamera"><div class="stage-horizon" id="stageHorizon"></div><div class="scene-hotspots" id="hotspotLayer"></div></div><div class="scene-grain" aria-hidden="true"></div><div class="scene-top"><span id="sceneCaption">НОВОРОССИЙСК · РЕКОНСТРУКЦИЯ</span><span class="scene-live"><i></i> ИГРОВАЯ СЦЕНА</span></div><div id="sceneContent" class="scene-content"></div><div class="scene-bottom"><span id="sceneInstruction">Нажми на подсвеченные предметы</span><div class="zoom-controls"><button id="zoomMinus" title="Отдалить" aria-label="Отдалить">−</button><span id="zoomValue">100%</span><button id="zoomPlus" title="Приблизить" aria-label="Приблизить">+</button><button id="zoomReset" title="Сбросить обзор" aria-label="Сбросить обзор">↺</button></div></div></div><div class="mission-card" id="missionCard"></div></div>
+<aside class="evidence-panel"><div class="evidence-title"><span class="rail-heading">СОБРАННЫЕ УЛИКИ</span><span id="evidenceFraction">00 / 03</span></div><div id="evidenceDeck" class="evidence-deck"></div><button id="boardOpen" class="evidence-board-button">Открыть досье <span>↗</span></button><p class="evidence-tip">Оборот предмета может оказаться важнее его лицевой стороны.</p></aside></div>
+</section>
+</main>
+<footer class="footer"><span>ТЁМНОЕ ДЕЛО © 2026</span><span>Интерактивная демоверсия · художественная реконструкция · без реальных платежей</span><button id="footerCases">К списку дел ↗</button></footer>
+<div id="modalRoot" class="modal-root" aria-live="polite"></div><div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="./cases.js?v=12.0"></script><script src="./art.js?v=12.0"></script><script src="./app.js?v=12.0"></script>
+</body></html>
