@@ -10,7 +10,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 const STAGES=['Получить дело','Осмотр места','Секретный замок','Восстановить кадр','Допрос','Линия времени','Вердикт'];
 const KIND={map:'Схема квартала',window:'Запись охраны',ticket:'Медный жетон',page:'Дневник архивариуса',lock:'Сломанная пломба',photo:'Восстановленный снимок',witness:'Ложные показания',time:'Линия времени',final:'Дело закрыто'};
 const THUMB={map:'clue-map-v6.webp',window:'clue-record-v6.webp',ticket:'clue-coin-v6.webp',page:'clue-journal-v6.webp',lock:'scene-safe-v6.webp',photo:'clue-photo-v6.webp',witness:'clue-record-v6.webp',time:'clue-map-v6.webp',final:'clue-photo-v6.webp'};
-const SCENE={office:'scene-office-v6.webp',safe:'scene-safe-v6.webp'};
+const SCENE={office:'office-v8.webp',safe:'safe-v8.webp'};
 const LOCATIONS=[
  {key:'map',x:53,y:79,name:'План маршрутов',tag:'Чертёж на столе'},
  {key:'window',x:74,y:40,name:'Запись охраны',tag:'Часы у окна'},
@@ -56,6 +56,7 @@ function tone(type='tap'){
 function award(n,message){extra.xp+=n;saveMeta();tone(n>=50?'win':'found');let e=document.createElement('div');e.className='td8-reward';e.textContent='+'+n+' XP · '+message;root.appendChild(e);setTimeout(()=>e.remove(),1900);}
 function say(msg,success=false){const el=root.querySelector('.td8-toast');if(!el)return;el.className='td8-toast '+(success?'ok':'');el.textContent=msg;el.hidden=false;clearTimeout(say.timer);say.timer=setTimeout(()=>{el.hidden=true},3200);tone(success?'found':'bad');}
 function siteCase(){return CITIES[caseId]||CITIES[0]}
+function story10(){return window.TDCaseStory?window.TDCaseStory(caseId):null}
 function seen(k){return state.clues.includes(k)}
 function countFind(){return LOCATIONS.filter(p=>seen(p.key)).length}
 function completed(){return state.cleared.length}
@@ -63,7 +64,7 @@ function setStage(i){const max=Math.max(state.highestStage||0,state.stage);if(i>
 function boot(){if(active)return;active=true;loadMeta();lastStage=-1;camera.x=camera.tx=0;camera.y=camera.ty=0;camera.z=camera.tz=1;
  game.classList.add('td8-active');document.body.classList.add('td8-in-game');render();loop();}
 function stop(){active=false;game.classList.remove('td8-active');document.body.classList.remove('td8-in-game');cancelAnimationFrame(rafId);rafId=0;cancelAnimationFrame(particleRaf);particleRaf=0;root.innerHTML='';}
-function shell(){const c=siteCase();
+function shell(){const c=siteCase(),story=story10();
  const percent=Math.round(completed()/7*100);let number=String(caseId+1).padStart(3,'0');
  return `<div class="td8-topbar">
  <button class="td8-back" data-a="back" aria-label="Назад к городам"><span>‹</span> ВЫБРАТЬ ГОРОД</button>
@@ -93,34 +94,34 @@ function hotspots(){const p=$('td8Targets');if(!p)return;
 }
 function button(label,action,extraClass=''){return `<button class="td8-cta ${extraClass}" data-a="${action}">${label} <span>↗</span></button>`}
 function mission(){const el=$('td8Mission');if(!el)return;
- const c=siteCase();let title='',description='',inner='';
+ const c=siteCase(),story=story10();let title='',description='',inner='';
  switch(state.stage){
   case 0:
-   title='Начинается новое дело';description=`${esc(c.city)}. Из городского архива исчезла ценная находка. Последняя запись обрывается в 20:40. У тебя есть подозреваемые, несколько странных отметок и семь этапов расследования.`;
+   title=esc(c.title);description=`${esc(c.city)}. ${esc(story?.opening||c.summary)} Место расследования: ${esc(story?.setting||'городской архив')}. Разберись в показаниях и выясни, что произошло. Это художественный квест по мотивам городской истории.`;
    inner=`<div class="td8-chips"><span>◉ 7 этапов</span><span>◆ 9 улик</span><span>⏱ 30–50 минут на пилотное дело</span></div>${button('ПРИНЯТЬ ДЕЛО','start')}`;break;
   case 1:
-   title='Найди четыре улики';description='Осматривай комнату, приближай стол, проверь дневник и записи охраны. Важное часто спрятано на обороте предмета.';
+   title='Найди четыре улики';description=`Место: ${esc(story?.setting||c.city)}. ${esc(story?.trace||'Изучи записи и маршруты')}. Приближай предметы, переворачивай их и сравнивай заметки.`;
    inner=`<div class="td8-mission-progress"><span>НАЙДЕНО</span><strong>${countFind()} / 4</strong><div><i style="width:${countFind()*25}%"></i></div></div>${countFind()>=4?button('ПЕРЕЙТИ К ЗАМКУ','next'):'<div class="td8-hintline">Подсвеченные точки можно нажимать. Все найденные предметы останутся в досье.</div>'}`;break;
   case 2:
-   title='Сейф с трёхзначным кодом';description='В дневнике записан порядок: маршрут → окно → жетон. Поворачивай барабаны колёсиком, свайпом или кнопками.';
+   title='Расшифруй местный код';description=`Цифры спрятаны на оборотах карты, записи наблюдения и жетона. Порядок: карта → запись → жетон. ${esc(story?.trace||'')}`;
    inner=`<div class="td8-safe-work"><div class="td8-dials" aria-label="Трёхзначный код">${extra.reels.map((n,i)=>`<div class="td8-dial" data-reel="${i}"><button data-a="reel" data-i="${i}" data-d="1" aria-label="Увеличить цифру">⌃</button><div class="td8-dial-digit">${n}</div><button data-a="reel" data-i="${i}" data-d="-1" aria-label="Уменьшить цифру">⌄</button></div>`).join('')}</div>${button('ОТКРЫТЬ ЗАМОК','unlock')}</div>`;break;
   case 3:
-   title='Восстанови найденный кадр';description='Камера сняла неизвестного у архива, но изображение рассыпалось на фрагменты. Меняй плитки местами, пока не соберёшь снимок.';
-   inner=`<div class="td8-puzzle-wrap"><div class="td8-puzzle" id="td8Puzzle" aria-label="Головоломка из девяти фрагментов">${state.shots.map((k,i)=>`<button class="td8-tile ${selectedTile===i?'is-selected':''}" draggable="true" data-tile="${i}" title="Фрагмент ${i+1}" aria-label="Фрагмент ${i+1}"><span style="background-image:url('./clue-photo-v6.webp');background-position:${k%3*50}% ${Math.floor(k/3)*50}%"></span></button>`).join('')}</div><div class="td8-puzzle-help"><b>КАК СОБРАТЬ</b><p>Нажми одну плитку, затем другую. На компьютере их можно перетаскивать.</p><button data-a="puzzlehint">✧ ПОМОЩЬ</button><button data-a="puzzlereset">↺ ПЕРЕМЕШАТЬ</button></div></div>`;break;
+   title='Восстанови картину происшествия';description=`Собери повреждённый снимок, связанный с ${esc(story?.setting||c.city)}. Затем сопоставь его с найденным документом.`;
+   inner=`<div class="td8-puzzle-wrap"><div class="td8-puzzle" id="td8Puzzle" aria-label="Головоломка из девяти фрагментов">${state.shots.map((k,i)=>`<button class="td8-tile ${selectedTile===i?'is-selected':''}" draggable="true" data-tile="${i}" title="Фрагмент ${i+1}" aria-label="Фрагмент ${i+1}"><span style="background-image:url('${window.TDCasePhoto?.(caseId)||'./clue-photo-v6.webp'}');background-position:${k%3*50}% ${Math.floor(k/3)*50}%"></span></button>`).join('')}</div><div class="td8-puzzle-help"><b>КАК СОБРАТЬ</b><p>Нажми одну плитку, затем другую. На компьютере их можно перетаскивать.</p><button data-a="puzzlehint">✧ ПОМОЩЬ</button><button data-a="puzzlereset">↺ ПЕРЕМЕШАТЬ</button></div></div>`;break;
   case 4:
-   title='Кто-то врёт';description='После 20:40 дверь архива больше не открывали. Но один из свидетелей утверждает обратное. Кто говорит неправду?';
+   title='Проверь показания';description=`Ключевое расхождение: ${esc(story?.trace||'время не совпадает')}. Один свидетель путается в последовательности событий. Кто именно?`;
    inner=`<div class="td8-dialogue"><div class="td8-dialogue-head">ЗАПИСЬ С ОПРОСА · 21:12 <span>● REC</span></div>
-   ${[['guard','Смотритель','«В 19:30 я ушёл домой, как всегда».'],['courier','Курьер','«Лично вошёл через главную дверь около 21:00».'],['resident','Соседка','«Слышала звонок около девяти, но никого не видела».']].map(([key,name,words])=>`<button data-a="witness" data-w="${key}" class="td8-answer"><span>❝</span><b>${name}</b><small>${words}</small><i>ПРОВЕРИТЬ ↗</i></button>`).join('')}</div>`;break;
+   ${(story?.statements||[['guard','Смотритель','«В 19:30 я ушёл домой».'],['courier','Курьер','«Прибыл в 21:00».'],['resident','Соседка','«Слышала звонок».']]).map(([key,name,words])=>`<button data-a="witness" data-w="${key}" class="td8-answer"><span>❝</span><b>${name}</b><small>${words}</small><i>ПРОВЕРИТЬ ↗</i></button>`).join('')}</div>`;break;
   case 5:
    title='Восстанови хронологию';description='Поставь четыре события в правильной последовательности. Перетаскивай карточки или пользуйся стрелками.';
-   inner=`<div class="td8-timeline" id="td8Timeline">${state.sequence.map((n,i)=>`<div class="td8-time-card" draggable="true" data-order="${i}"><span>${String(i+1).padStart(2,'0')}</span><b>${LINES[n]}</b><div><button data-a="move" data-i="${i}" data-d="-1" ${i===0?'disabled':''} aria-label="Поднять событие">↑</button><button data-a="move" data-i="${i}" data-d="1" ${i===3?'disabled':''} aria-label="Опустить событие">↓</button></div></div>`).join('')}</div>${button('ПРОВЕРИТЬ ХРОНОЛОГИЮ','timelinecheck')}`;break;
+   inner=`<div class="td8-timeline" id="td8Timeline">${state.sequence.map((n,i)=>`<div class="td8-time-card" draggable="true" data-order="${i}"><span>${String(i+1).padStart(2,'0')}</span><b>${(story?.timeline||LINES)[n]}</b><div><button data-a="move" data-i="${i}" data-d="-1" ${i===0?'disabled':''} aria-label="Поднять событие">↑</button><button data-a="move" data-i="${i}" data-d="1" ${i===3?'disabled':''} aria-label="Опустить событие">↓</button></div></div>`).join('')}</div>${button('ПРОВЕРИТЬ ХРОНОЛОГИЮ','timelinecheck')}`;break;
   case 6:
    if(state.cleared.includes(6)){
-    title='Дело раскрыто!';description='Ты сопоставил показания с уликами и восстановил последовательность событий. Разгадка найдена.';
+    title='Дело раскрыто!';description=`${esc(story?.reveal||'Загадка разгадана')}. ${esc(story?.caveat||'Версия подтверждена')} — художественное расследование завершено.`;
     inner=`<div class="td8-finale"><div>✓</div><strong>РАССЛЕДОВАНИЕ ЗАКРЫТО</strong><p>Все доказательства собраны. Игра сохранила твой прогресс.</p>${button('ВЫБРАТЬ ДРУГОЙ ГОРОД','back')}${button('СЫГРАТЬ ЕЩЁ РАЗ','replay','secondary')}</div>`;
    }else{
-    title='Собери окончательную версию';description='Кто подменил архивный предмет? Как это произошло и зачем понадобился звонок? Выбери объяснение, которое подтверждают все улики.';
-    inner=`<div class="td8-verdict"><label>КТО?<select id="td8Who"><option value="">Выбрать подозреваемого</option><option value="guard">Смотритель</option><option value="courier" ${extra.who==='courier'?'selected':''}>Курьер</option><option value="resident">Соседка</option></select></label><label>КОГДА?<select id="td8Way"><option value="">Время подмены</option><option value="after">После закрытия</option><option value="before" ${extra.way==='before'?'selected':''}>До опечатывания</option></select></label><label>ЗАЧЕМ ЗВОНОК?<select id="td8Why"><option value="">Выбери версию</option><option value="warning">Предупреждение</option><option value="distraction" ${extra.why==='distraction'?'selected':''}>Отвлечь охрану</option></select></label></div>${button('ЗАКРЫТЬ ДЕЛО','verdict')}`;
+    title='Восстанови настоящую последовательность';description=`Выясни, что произошло ${esc(story?.setting||'в городе')}. Сопоставь время, найденную улику и слова подозреваемых. ${esc(story?.caveat||'Это художественный сюжет')}.`;
+    inner=`<div class="td8-verdict"><label>КТО?<select id="td8Who"><option value="">Выбрать подозреваемого</option><option value="guard">Смотритель</option><option value="courier" ${extra.who==='courier'?'selected':''}>Посыльный</option><option value="resident" ${extra.who==='resident'?'selected':''}>Очевидец</option></select></label><label>КОГДА?<select id="td8Way"><option value="">Время подмены</option><option value="after">После закрытия</option><option value="before" ${extra.way==='before'?'selected':''}>До опечатывания</option></select></label><label>ЗАЧЕМ ЗВОНОК?<select id="td8Why"><option value="">Выбери версию</option><option value="warning">Предупреждение</option><option value="distraction" ${extra.why==='distraction'?'selected':''}>Отвлечь охрану</option></select></label></div>${button('ЗАКРЫТЬ ДЕЛО','verdict')}`;
    }
  }
  el.innerHTML=`<div class="td8-mission-copy"><span class="td8-mission-tag">ЗАДАНИЕ · ${String(state.stage+1).padStart(2,'0')}</span><h2>${title}</h2><p>${description}</p></div><div class="td8-mission-action">${inner}</div>`;
@@ -136,7 +137,7 @@ function drawScene(){const targets=$('td8Targets'),scene=$('td8Theatre');if(!sce
  setupSpecks();
 }
 function render(){if(!active)return;const previous=lastStage;root.innerHTML=shell();drawInventory();mission();drawScene();lastStage=state.stage;
- if(previous!==state.stage&&previous>=0){const curtain=document.createElement('div');curtain.className='td8-transition';curtain.innerHTML=`<span>ГЛАВА ${String(state.stage+1).padStart(2,'0')}</span><strong>${STAGES[state.stage]}</strong>`;root.appendChild(curtain);setTimeout(()=>curtain.remove(),870)}
+ if(previous!==state.stage&&previous>=0){const curtain=document.createElement('div');curtain.className='td8-transition td10-page-turn';curtain.innerHTML=`<span>ГЛАВА ${String(state.stage+1).padStart(2,'0')}</span><strong>${STAGES[state.stage]}</strong>`;root.appendChild(curtain);setTimeout(()=>curtain.remove(),1120)}
 }
 function zoom(delta){camera.tz=Math.min(2.65,Math.max(1,camera.tz+delta));$('td8Zoom').textContent=Math.round(camera.tz*100)+'%';}
 function focusAt(x,y){camera.tz=1.42;camera.tx=Math.max(-180,Math.min(180,(50-x)*3));camera.ty=Math.max(-85,Math.min(85,(50-y)*2));}
@@ -150,18 +151,19 @@ function advance(action){tone('tap');const old=state.stage;
  if(state.stage!==old){award(65,'Этап завершён');render()}
 }
 function reel(i,d){extra.reels[i]=(extra.reels[i]+d+10)%10;tone('tap');mission()}
-function unlock(){const code=extra.reels.join('');if(code==='314'){clueAdd('lock');completeStage(2);award(100,'Замок вскрыт');render();say('Сейф открыт, печать снята!',true)}else{say('Неверная комбинация. Изучи обратную сторону предметов.');root.querySelectorAll('.td8-dial-digit').forEach(x=>{x.classList.remove('shake');void x.offsetWidth;x.classList.add('shake')})}}
+function unlock(){const code=extra.reels.join('');if(code===(story10()?.code||'314')){clueAdd('lock');completeStage(2);award(100,'Замок вскрыт');render();say('Сейф открыт, печать снята!',true)}else{say('Неверная комбинация. Изучи обратную сторону предметов.');root.querySelectorAll('.td8-dial-digit').forEach(x=>{x.classList.remove('shake');void x.offsetWidth;x.classList.add('shake')})}}
 function swap(i,j){if(i===j){selectedTile=null;mission();return;}const a=state.shots;[a[i],a[j]]=[a[j],a[i]];persist();selectedTile=null;tone('tap');if(a.every((x,i)=>x===i)){clueAdd('photo');completeStage(3);award(120,'Кадр восстановлен');render();say('В кадре обнаружен важный предмет!',true)}else mission()}
 function moveOrder(i,j){if(j<0||j>3||i===j)return;const v=state.sequence.splice(i,1)[0];state.sequence.splice(j,0,v);persist();tone('tap');mission()}
 function checkTimeline(){if(state.sequence.every((v,i)=>v===i)){clueAdd('time');completeStage(5);award(90,'Хронология собрана');render();say('Все отметки совпали!',true)}else say('Последовательность неверна. Сверь время каждого события.')}
 function checkVerdict(){const who=$('td8Who')?.value,way=$('td8Way')?.value,why=$('td8Why')?.value;
- Object.assign(extra,{who,way,why});if(who==='courier'&&way==='before'&&why==='distraction'){
- const oldWho=$('who'),oldWay=$('howway'),oldWhy=$('why');if(oldWho&&oldWay&&oldWhy){oldWho.value=who;oldWay.value=way;oldWhy.value=why;handleGameAction('verdict')}else{clueAdd('final');if(!state.cleared.includes(6))state.cleared.push(6);persist()}
+ Object.assign(extra,{who,way,why});if(who===(story10()?.culprit||'courier')&&way==='before'&&why==='distraction'){
+ clueAdd('final');if(!state.cleared.includes(6))state.cleared.push(6);persist();
  award(350,'Дело раскрыто');render();say('Поздравляем, версия подтверждена!',true);
  }else{say('Не все выводы подтверждаются уликами. Проверь хронологию и показания.');}}
 function board(){const modal=$('td8Modal');if(!modal)return;modal.hidden=false;modal.innerHTML=`<div class="td8-modal-shade" data-a="closemodal"></div><div class="td8-board" role="dialog" aria-modal="true" aria-label="Доска версий"><button data-a="closemodal" class="td8-board-close" aria-label="Закрыть">×</button><div class="td8-label">ДОСКА РАССЛЕДОВАНИЯ</div><h2>Соедини детали в одну картину</h2><p>Каждая находка приближает к ответу. Нажми на карту, чтобы изучить её в объёме.</p><div class="td8-board-grid">${Object.keys(KIND).map((k,i)=>`<button class="td8-board-card ${seen(k)?'known':'unknown'}" ${seen(k)?`data-a="inspect" data-key="${k}"`:''}><img src="./${THUMB[k]}" alt="" loading="lazy"><b>${seen(k)?esc(KIND[k]):'НЕ НАЙДЕНО'}</b></button>`).join('')}</div><button class="td8-cta" data-a="closemodal">НАЗАД К ИГРЕ <span>↗</span></button></div>`;}
 function closeModal(){const el=$('td8Modal');if(el){el.hidden=true;el.innerHTML='';}}
-function hint(){state.hints++;persist();say(HINTS8[state.stage],true);if(state.stage===1){const p=LOCATIONS.find(p=>!seen(p.key));if(p){const t=root.querySelector('[data-key="'+p.key+'"][data-a="find"]');t?.classList.add('td8-highlight');setTimeout(()=>t?.classList.remove('td8-highlight'),3500)}}}
+function hint(){state.hints++;persist();say(story10()?.hints?.[state.stage]||HINTS8[state.stage],true);if(state.stage===1){const p=LOCATIONS.find(p=>!seen(p.key));if(p){const t=root.querySelector('[data-key="'+p.key+'"][data-a="find"]');t?.classList.add('td8-highlight');setTimeout(()=>t?.classList.remove('td8-highlight'),3500)}}}
+window.TDGamePages={get stage(){return state?.stage??0},get unlocked(){return Math.max(state?.highestStage||0,state?.stage||0)},get city(){return caseId},go(i){if(!active||i<0||i>6||i>this.unlocked)return false;setStage(i);return true}};
 function fullscreen(){if(!document.fullscreenElement){(root.requestFullscreen||root.webkitRequestFullscreen)?.call(root)}else{document.exitFullscreen?.()}}
 root.addEventListener('click',ev=>{
  const target=ev.target.closest('[data-a]');if(!target||!active)return;
@@ -183,7 +185,7 @@ root.addEventListener('click',ev=>{
  if(a==='unlock'){unlock();return}
  if(a==='puzzlehint'){const wrong=state.shots.findIndex((n,i)=>n!==i);if(wrong>=0){state.hints++;swap(wrong,state.shots.indexOf(wrong));}return}
  if(a==='puzzlereset'){state.shots=[7,1,4,0,8,2,5,6,3];selectedTile=null;persist();mission();return}
- if(a==='witness'){if(target.dataset.w==='courier'){clueAdd('witness');completeStage(4);award(100,'Противоречие найдено');render();say('Показания курьера противоречат протоколу.',true)}else say('Эти слова не противоречат протоколу охраны.');return}
+ if(a==='witness'){if(target.dataset.w===(story10()?.culprit||'courier')){clueAdd('witness');completeStage(4);award(100,'Противоречие найдено');render();say('Показания курьера противоречат протоколу.',true)}else say('Эти слова не противоречат протоколу охраны.');return}
  if(a==='move'){moveOrder(Number(target.dataset.i),Number(target.dataset.i)+Number(target.dataset.d));return}
  if(a==='timelinecheck'){checkTimeline();return}
  if(a==='verdict'){checkVerdict();return}
