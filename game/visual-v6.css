@@ -1,0 +1,125 @@
+/* TЁМНОЕ ДЕЛО • Cinematic Motion System v6
+   All animation respects accessibility & GPU budgets. */
+:root { --v6-amber:#ffbb67; --v6-cream:#ffe7bf; --v6-ink:#080e19; --v6-easing:cubic-bezier(.2,.78,.16,1); }
+html { scroll-behavior:smooth; }
+body { background:radial-gradient(ellipse at 50% -10%,#29344a 0%,#111b2b 45%,#0b1421 85%); }
+button, a { -webkit-tap-highlight-color:transparent; }
+button:focus-visible, a:focus-visible { outline:2px solid #ffd18a!important;outline-offset:3px; }
+/* The opening screens have independent moving layers rather than baked visual UI */
+#home .hero { isolation:isolate; overflow:hidden; }
+#home .hero-backdrop { transform-origin:50% 50%;animation:v6-city-drift 27s ease-in-out infinite alternate; will-change:transform;filter:saturate(1.16) contrast(1.07); }
+#home .hero-characters { transform-origin:50% 100%;animation:v6-character-float 6.7s ease-in-out infinite;filter:drop-shadow(0 24px 23px #05081091);will-change:transform; }
+#home .hero-glow { animation:v6-glow-drift 9s ease-in-out infinite alternate; }
+#home .hero-status .pulse { box-shadow:0 0 0 0 #ffc56d66;animation:v6-status-pulse 2.1s ease-out infinite; }
+#home .hero-title { text-shadow:0 4px 22px #000b; }
+#home .hero-title em { background:linear-gradient(98deg,#f9ba69,#ffde9d 48%,#f4a449 60%,#ffe4ac 77%,#e69e51);background-size:210% 100%;color:transparent;background-clip:text;-webkit-background-clip:text;animation:v6-metal-shine 9s linear infinite; }
+#home .hero-copy { animation:v6-copy-arrive .85s var(--v6-easing) both; }
+#home .hero-bottom { animation:v6-copy-arrive 1s .23s var(--v6-easing) both; }
+#home .city-switch button, #home .city-grid button, #home .step-card, #home .city-grid .city-tile { transition:transform .45s var(--v6-easing),box-shadow .35s,border-color .35s,filter .35s; }
+#home .city-grid .city-tile:hover, #home .city-grid button:hover { transform:translateY(-7px);box-shadow:0 20px 36px #0007,0 0 0 1px #ffbf7770; }
+#home .step-card:hover { transform:translateY(-5px);box-shadow:0 24px 45px #0004; }
+#home .btn.primary, #game .btn.primary { position:relative;overflow:hidden;isolation:isolate;transition:transform .25s var(--v6-easing),box-shadow .25s; }
+#home .btn.primary:hover, #game .btn.primary:hover { transform:translateY(-3px);box-shadow:0 13px 32px #c67b3980; }
+#home .btn.primary::after, #game .btn.primary::after { content:'';position:absolute;inset:-20% auto -20% -45%;width:23%;pointer-events:none;background:linear-gradient(90deg,transparent,#fff9c794,transparent);transform:skewX(-23deg);animation:v6-button-sheen 5.8s ease-in-out infinite; }
+#home .city-grid img { transition:transform .8s var(--v6-easing),filter .6s; }
+#home .city-grid button:hover img { transform:scale(1.07);filter:saturate(1.2); }
+#home .step-card, #home .city-grid > * { animation:v6-tile-appear .75s both; }
+#home .step-card:nth-child(2), #home .city-grid > *:nth-child(2) {animation-delay:.12s}
+#home .step-card:nth-child(3), #home .city-grid > *:nth-child(3) {animation-delay:.22s}
+#home .city-grid > *:nth-child(4) {animation-delay:.3s}
+#home .city-grid > *:nth-child(5) {animation-delay:.38s}
+#home .city-grid > *:nth-child(6) {animation-delay:.44s}
+/* Game layout becomes refined cinematic panels instead of a flat UI. */
+#game.game-wrap { background:radial-gradient(ellipse at 50% 10%,#33283a66,transparent 60%),#080e19; }
+#game .game-heading {border-color:#bd855380;background:linear-gradient(110deg,#121b29ee,#19233aff);box-shadow:0 16px 55px #0009,inset 0 1px #ffe0ab29;}
+#game .game-heading h1 {font-family:Manrope,Arial,sans-serif;font-weight:900;font-size:clamp(25px,2.25vw,37px);text-wrap:balance;}
+#game .game-side {background:linear-gradient(135deg,#1a2430e8,#0d151fef);}
+#game .stage-button {transition:transform .24s var(--v6-easing),background .25s,filter .2s,box-shadow .3s;}
+#game .stage-button:not(:disabled):hover {transform:translateX(4px);background:#50402eaa;}
+#game .stage-button.current {box-shadow:0 0 25px #f7aa573a,inset 0 0 23px #fbb36b26;animation:v6-stage-glow 4s ease-in-out infinite;}
+#game .game-main {overflow:hidden;border:1px solid #b68354a3;box-shadow:0 20px 62px #0009,0 0 35px #e3a45a0b;}
+#game .game-scene {aspect-ratio:2200/940;background:#070c15;position:relative;overflow:hidden;isolation:isolate;}
+#game .room-photo {image-rendering:auto!important;object-fit:fill;transform-origin:50% 50%;animation:v6-room-breathe 20s ease-in-out infinite alternate;filter:saturate(1.17) contrast(1.08);transition:opacity .5s;}
+#game .room-photo.v6-loaded {opacity:1;}
+#game .room-vignette {z-index:2;pointer-events:none;background:linear-gradient(to top,#05070acc,transparent 16%,transparent 75%,#080c15ac),linear-gradient(90deg,#05070a66,transparent 12%,transparent 85%,#05070a66);}
+#game .scene-heading {z-index:5;}
+#game .scene-tutorial {z-index:6;backdrop-filter:blur(10px);}
+#game .v6-room-fx {position:absolute;inset:0;pointer-events:none;z-index:3;overflow:hidden;}
+#game .v6-glint {position:absolute;inset:0;background:radial-gradient(ellipse at 31% 34%,#ffc97835 0%,#ffc97810 11%,transparent 30%);mix-blend-mode:screen;opacity:.65;animation:v6-lamp-flutter 7.4s ease-in-out infinite;}
+#game .v6-window-reflection {position:absolute;left:42%;top:6%;width:34%;height:55%;background:repeating-linear-gradient(108deg,transparent 0 39px,#91d1fc08 41px 43px,transparent 46px 80px);mask-image:linear-gradient(to bottom,transparent,#0009,transparent);mix-blend-mode:screen;animation:v6-rain-drift 6s linear infinite;opacity:.7;}
+#game .v6-mouse-light {position:absolute;inset:0;background:radial-gradient(circle 150px at var(--v6-x,50%) var(--v6-y,45%),#ffe2b517,transparent 75%);mix-blend-mode:screen;opacity:.85;}
+#game .v6-particles {position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:4;}
+#game .game-scene.v6-scene-in {animation:v6-scene-reveal .55s var(--v6-easing) both;}
+#game .scene-hot, #game .scene-decoy {cursor:crosshair;}
+#game .scene-hot::before {opacity:.64!important;inset:5px!important;border:1px solid #fff0c5dd!important;box-shadow:0 0 15px #ffa9489f,0 0 0 4px #ffc17515!important;animation:v6-hotspot-pulse 2.6s ease-in-out infinite!important;}
+#game .scene-hot:hover::before, #game .scene-hot:focus-visible::before {opacity:1!important;animation-duration:1.2s!important;box-shadow:0 0 27px #ffd296,0 0 0 10px #ffab5342!important;}
+#game .scene-hot.found::before {opacity:.36!important;border-color:#76efb9!important;box-shadow:0 0 18px #62e9af80!important;animation:none!important;}
+#game .scene-decoy::before {opacity:.35!important;box-shadow:0 0 13px #f4b35b6e!important;animation:v6-hotspot-pulse 4.2s ease-in-out infinite!important;}
+#game .scene-hot:active, #game .scene-decoy:active {filter:brightness(1.4);}
+#game .game-panel {background:linear-gradient(130deg,#15202d,#101725);border-top-color:#b38659a6;}
+#game .game-panel h2 {font-family:Manrope,Arial,sans-serif;font-size:clamp(22px,2.05vw,30px);font-weight:900;line-height:1.2;}
+#game .game-panel #gameFeedback:not(:empty) {animation:v6-tile-appear .3s var(--v6-easing) both;}
+#game .clue {transition:transform .28s var(--v6-easing),border-color .28s,box-shadow .28s;}
+#game .clue:hover {transform:translateY(-5px) rotate(-1deg);border-color:#f2b86b;box-shadow:0 14px 28px #0007,0 0 17px #e5a85938;}
+#game .clue-thumb {object-fit:cover;image-rendering:auto;filter:saturate(1.12) contrast(1.03);transition:transform .45s;}
+#game .clue:hover .clue-thumb {transform:scale(1.035);}
+#game .clue-viewer {animation:v6-backdrop-in .25s both;}
+#game .clue-viewer-inner {animation:v6-viewer-pop .4s var(--v6-easing) both;box-shadow:0 26px 100px #000e,0 0 60px #dda05823;}
+#game .clue-viewer-inner img {image-rendering:auto;}
+#game .quest-safe {box-shadow:0 10px 60px #0009,0 0 36px #de925754;animation:v6-safe-appear .65s var(--v6-easing) both;}
+#game .safe-display {text-shadow:0 0 12px #ffd07a66;}
+#game .safe-digits button {transition:transform .12s,background .2s,box-shadow .2s;}
+#game .safe-digits button:hover {transform:translateY(-2px);box-shadow:0 5px 16px #e6ac5a70;}
+#game .safe-digits button:active {transform:scale(.92);}
+#game .photo-tile {transition:transform .24s,border-color .3s,box-shadow .3s;}
+#game .photo-tile:hover {transform:translateY(-2px);box-shadow:0 8px 21px #0007;}
+#game .photo-tile.selected {box-shadow:0 0 0 3px #eeb568,0 0 20px #ebb05677;}
+#game .choose-list button {transition:background .2s,transform .2s,border-color .2s;}
+#game .choose-list button:hover {transform:translateX(3px);border-color:#eeb568;background:#3e3231;}
+#game .success-card {animation:v6-viewer-pop .8s var(--v6-easing) both;}
+#game .progress-bar > div {transition:width .8s var(--v6-easing);background:linear-gradient(90deg,#c97835,#ffd08b 55%,#e89344);box-shadow:0 0 16px #ffb76777;}
+#game .v6-stageline {height:3px;position:absolute;bottom:0;left:0;background:linear-gradient(90deg,transparent,#ffc178,transparent);width:36%;animation:v6-line-glide 8s linear infinite;pointer-events:none;opacity:.5;}
+/* Full-screen discovery stamp is a new *real* UI layer, never baked into photography. */
+#game .v6-discovery {position:absolute;inset:0;z-index:50;display:grid;place-items:center;background:#080c12a6;backdrop-filter:blur(3px);animation:v6-discovery-bg .8s both;pointer-events:none;}
+#game .v6-discovery span {color:#ffe6b8;font-size:clamp(21px,3.1vw,39px);font-weight:900;letter-spacing:.035em;text-align:center;border:2px solid #ffcf77;padding:16px 28px;transform:rotate(-4deg);text-shadow:0 4px 19px #000;box-shadow:0 0 52px #ffad5477,inset 0 0 19px #ffc76e30;animation:v6-discovery-stamp .65s var(--v6-easing) both;}
+/* Accessible mobile panorama: keep all click targets aligned while allowing swipe-to-pan. */
+@media (max-width:930px){
+ #game .game-main {overflow-x:auto;overscroll-behavior-x:contain;scrollbar-color:#aa7b55 #111924;}
+ #game .game-scene {width:max(720px,100%);min-width:720px;max-width:none;height:auto;aspect-ratio:2200/940;}
+ #game .game-panel {width:100%;min-width:0;}
+ #game .game-layout {grid-template-columns:1fr;}
+ #home .hero-backdrop {animation-duration:32s;}
+}
+@media(max-width:580px){
+ #game .game-scene {width:720px;min-width:720px;}
+ #game .clue-list {grid-template-columns:repeat(2,minmax(0,1fr));}
+ #game .game-side {min-height:auto;}
+ #home .hero-characters {animation-duration:8s;}
+ #game .v6-mouse-light {display:none;}
+}
+@media(hover:none){ #game .scene-hot::before {opacity:.85!important;} }
+@media(prefers-reduced-motion: reduce){
+ *,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important;}
+ #game .room-photo,#home .hero-backdrop,#home .hero-characters {transform:none!important;}
+ #game .v6-particles {display:none!important;}
+}
+@keyframes v6-city-drift {from{transform:scale(1.01) translate3d(-.5%,0,0)}to{transform:scale(1.08) translate3d(1%,.4%,0)}}
+@keyframes v6-character-float {0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes v6-glow-drift {from{transform:translateX(-2%);opacity:.5}to{transform:translateX(3%);opacity:.95}}
+@keyframes v6-status-pulse {0%{box-shadow:0 0 0 0 #ffc56d8f}85%,100%{box-shadow:0 0 0 12px #ffc56d00}}
+@keyframes v6-metal-shine {0%{background-position:170% 0}100%{background-position:-80% 0}}
+@keyframes v6-copy-arrive {from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes v6-tile-appear {from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
+@keyframes v6-button-sheen {0%,60%,100%{left:-55%}80%{left:130%}}
+@keyframes v6-room-breathe {0%{transform:scale(1)}100%{transform:scale(1.044)}}
+@keyframes v6-lamp-flutter {0%,30%,32%,70%,72%,100%{opacity:.5}31%,71%{opacity:.75}40%,85%{opacity:.62}}
+@keyframes v6-rain-drift {from{transform:translateX(-18px)}to{transform:translateX(18px)}}
+@keyframes v6-stage-glow {0%,100%{filter:brightness(1)}50%{filter:brightness(1.12)}}
+@keyframes v6-hotspot-pulse {0%,100%{transform:scale(.89);opacity:.5}50%{transform:scale(1.18);opacity:.95}}
+@keyframes v6-scene-reveal {from{opacity:.45;filter:blur(5px);transform:scale(.995)}to{opacity:1;filter:blur(0);transform:scale(1)}}
+@keyframes v6-viewer-pop {from{opacity:0;transform:translateY(28px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes v6-backdrop-in {from{opacity:0}to{opacity:1}}
+@keyframes v6-safe-appear {from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes v6-discovery-bg {0%{opacity:0}20%{opacity:1}100%{opacity:0}}
+@keyframes v6-discovery-stamp {0%{transform:rotate(-9deg) scale(1.5);opacity:0}30%,60%{transform:rotate(-4deg) scale(1);opacity:1}100%{transform:rotate(-4deg) scale(1.02);opacity:0}}
+@keyframes v6-line-glide {from{transform:translateX(-120%)}to{transform:translateX(380%)}}
