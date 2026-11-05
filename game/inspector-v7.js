@@ -126,5 +126,7 @@ const list=$('clueList');const mutate=new MutationObserver(()=>{
   const tip=document.createElement('div');tip.className='td7-clue-hint';tip.textContent='⤾ ВРАЩАТЬ • ПРИБЛИЖАТЬ';clue.appendChild(tip);
  }
 });if(list){mutate.observe(list,{childList:true});}
-window.TDInspectorVersion='7.0';
+window.TDInspectorOpen=open;
+window.TDInspectorClose=close;
+window.TDInspectorVersion='7.1';
 })();
