@@ -48,7 +48,8 @@ def schema():
 
 @asynccontextmanager
 async def lifespan(app):
-    schema()
+    if DATABASE_URL:
+        schema()
     yield
 
 app=FastAPI(title="Тёмное дело / заявки",docs_url=None,redoc_url=None,openapi_url=None,lifespan=lifespan)
