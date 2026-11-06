@@ -132,3 +132,19 @@ body{touch-action:pan-y}
 .dossier-card .clue-art-sheet>strong{font-size:11px}
 .evidence-art .clue-art{min-height:380px}
 @media(max-width:760px){.evidence-art .clue-art{min-height:240px}.evidence-art .clue-art-sheet{min-height:76%;width:73%}.evidence-art .clue-art-sheet>i{font-size:46px;margin:7px 0}.evidence-art .clue-art-sheet>strong{font-size:22px}.evidence-art .clue-art-sheet>small{font-size:8px}.dossier-card .clue-art{min-height:90px}}
+
+
+/* Actual clue object on the scene, no generic scenery photos or unrelated city shots. */
+.clue-art{background:radial-gradient(ellipse at 43% 38%,#6b605248,transparent 65%),linear-gradient(135deg,#151c1e,#07090b);position:relative}
+.clue-art .clue-art-glaze{z-index:0;background:radial-gradient(ellipse at 58% 30%,#cfb69221,transparent 67%)}
+.clue-art .clue-art-sheet{z-index:1;min-height:85%;width:84%;background:linear-gradient(145deg,#d7c7ac,#b1a189);transform:rotate(-2deg);padding:14px 15px}
+.clue-art .clue-art-sheet>span{flex-shrink:0}
+.clue-art .clue-art-object{width:100%;max-width:310px;max-height:250px;flex:1;min-height:65px;margin:8px 0;filter:drop-shadow(3px 6px 3px #0005)}
+.clue-art .clue-art-sheet>strong{font-size:clamp(17px,2.3vw,28px);line-height:1.15}
+.clue-art .clue-art-caption{background:#101516cc}
+.clue-art-small .clue-art-sheet{min-height:75%;padding:4px;width:83%}
+.clue-art-small .clue-art-object{min-height:12px;max-height:63px;margin:0}
+.clue-art-small .clue-art-sheet>strong{font-size:9px}
+.clue-art-small .clue-art-sheet>span,.clue-art-small .clue-art-sheet>small{display:none}
+.clue-art-small .clue-art-caption{display:none}
+@media(max-width:760px){.evidence-art .clue-art-sheet{width:80%;padding:8px}.evidence-art .clue-art-object{min-height:70px;max-height:160px}.evidence-art .clue-art-sheet>strong{font-size:22px}}
