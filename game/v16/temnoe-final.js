@@ -71,7 +71,7 @@
     if(seen.size===3)demoResult.textContent="Все материалы изучены. Теперь выбери вывод, который следует проверить.";
     tone("click");
   }));
-  $("#demoCheck").addEventListener("click",()=>{
+  $("#demoCheck")?.addEventListener("click",()=>{
     const value=$("#demoVersion").value;
     if(seen.size<3){demoResult.textContent="Сначала открой все три материала: "+seen.size+" из 3.";return;}
     if(!value){demoResult.textContent="Выбери одну из версий.";return;}
