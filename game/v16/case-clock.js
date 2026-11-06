@@ -8,7 +8,7 @@ let saved;try{saved=JSON.parse(localStorage.getItem(key)||"null")||{}}catch{save
 const data={elapsed:Math.max(0,Number(saved.elapsed)||0),started:!!saved.started,paused:!!saved.paused};
 const el=document.createElement("div");el.className="case-clock";el.setAttribute("role","timer");el.setAttribute("aria-label","Время расследования");
 el.innerHTML='<div class="case-clock-mark">◷</div><div class="case-clock-info"><small>ВРЕМЯ РАССЛЕДОВАНИЯ</small><strong id="caseClockDigits">00:00:00</strong><span>ОРИЕНТИР: '+Math.floor(config.minutes/60)+' Ч '+String(config.minutes%60).padStart(2,"0")+' МИН</span></div><button id="caseClockPause" type="button" aria-label="Пауза или продолжить отсчёт" title="Пауза">Ⅱ</button>';
-document.body.append(el);
+const rail=document.createElement("div");rail.className="case-clock-rail";rail.setAttribute("aria-label","Панель таймера расследования");rail.append(el);const header=document.querySelector(".topbar,.game-head");if(header)header.insertAdjacentElement("afterend",rail);else document.body.prepend(rail);
 const digits=el.querySelector("#caseClockDigits"),pause=el.querySelector("#caseClockPause");
 let last=Date.now();
 function fmt(n){const s=Math.floor(n/1000);return [Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(v=>String(v).padStart(2,"0")).join(":")}
