@@ -1,0 +1,80 @@
+
+/* TЁMHOE DELO — independent photographic identity, editorial v2 */
+:root{--rd-ink:#07090a;--rd-paper:#eee4d7;--rd-red:#bb242c;--rd-warm:#d4b29a}
+#view-home{background:#090b0c;color:var(--rd-paper)}
+#view-home .rd-kicker{font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.19em;color:#d8a39a}
+#view-home em{font-style:normal;color:#dab5aa}
+#view-home .rd-red-button{display:inline-flex;gap:22px;align-items:center;justify-content:space-between;min-height:57px;padding:16px 28px;background:linear-gradient(105deg,#b7262b,#8e181d);border:1px solid #d74347;color:#fff;font:600 13px 'Oswald',sans-serif;letter-spacing:.08em;box-shadow:0 6px 25px #8a0a0a40;transition:transform .2s,background .2s,box-shadow .2s}
+#view-home .rd-red-button:hover{transform:translateY(-2px);background:#d73239;box-shadow:0 10px 30px #bd1a2458}
+#view-home .rd-hero{min-height:760px;position:relative;isolation:isolate;overflow:hidden;background:#0a0b0e;display:flex;flex-direction:column;justify-content:space-between}
+#view-home .rd-hero-art{position:absolute;inset:-2%;z-index:-3;background:#1b1716 url('https://images.pexels.com/photos/7319080/pexels-photo-7319080.jpeg?auto=compress&cs=tinysrgb&w=1920') 73% 49%/cover no-repeat;filter:contrast(1.2) brightness(.65) saturate(.68);transform:scale(1.025);animation:rd-breathe 24s ease-in-out alternate infinite}
+#view-home .rd-hero-scrim{position:absolute;inset:0;z-index:-2;background:linear-gradient(90deg,#090a0bef 0%,#090a0bec 27%,#0c0b0bc4 49%,#0a0b0b27 85%),linear-gradient(0deg,#06080aff 0%,transparent 40%),radial-gradient(ellipse at 90% 5%,#9c343029,transparent 48%)}
+#view-home .rd-hero:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at -8% 0%,#a6212822,transparent 36%),radial-gradient(ellipse at 105% 95%,#aa4c2922,transparent 35%)}
+#view-home .rd-hero-inner{flex:1;display:flex;align-items:center;padding-top:66px;padding-bottom:60px;min-height:700px}
+#view-home .rd-herocopy{max-width:760px;padding:40px 0}
+#view-home .rd-overline{display:flex;align-items:center;gap:15px;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.23em;color:#dcc6b5}
+#view-home .rd-overline span{height:2px;width:34px;background:#cc343b;flex-shrink:0}
+#view-home .rd-herocopy h1{font:700 clamp(103px,12.4vw,190px)/.79 'Cormorant Garamond',Georgia,serif;letter-spacing:-.056em;margin:40px 0 35px;color:#f3e8d7;text-shadow:0 10px 40px #000a}
+#view-home .rd-herocopy h1 em{color:#ce2833;font-style:normal}
+#view-home .rd-herocopy h1 em span{color:#db5858}
+#view-home .rd-herocopy h2{font:500 clamp(22px,2.35vw,34px)/1.25 'Oswald',sans-serif;letter-spacing:.095em;margin:0 0 17px;color:#eee4d8}
+#view-home .rd-herocopy>p{max-width:570px;color:#d6cbc0;font:400 15px/1.9 'Manrope',sans-serif;text-shadow:0 2px 9px #000d;margin:0}
+#view-home .rd-hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin:32px 0 39px}
+#view-home .rd-line-button{display:inline-flex;gap:20px;align-items:center;justify-content:space-between;min-height:57px;padding:15px 24px;background:#090b0b99;color:#eee3d6;border:1px solid #b7a08d;font:500 13px 'Oswald',sans-serif;letter-spacing:.08em;transition:background .2s,border-color .2s}
+#view-home .rd-line-button:hover{background:#332725;border-color:#eee0ca}
+#view-home .rd-hero-foot{display:flex;flex-wrap:wrap;gap:26px;color:#c9bab0;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.05em}
+#view-home .rd-hero-foot span{border-left:2px solid #c13b3c;padding-left:10px}
+#view-home .rd-hero-bottom{padding-block:17px;display:flex;justify-content:space-between;gap:15px;border-top:1px solid #876a5a79;font:600 10px 'IBM Plex Mono',monospace;color:#c2b6ad;letter-spacing:.1em}
+#view-home .rd-editorial{padding:115px 0 100px;background:linear-gradient(150deg,#101315,#0b0d0f 65%)}
+#view-home .rd-editorial-heading,#view-home .rd-process-title{display:grid;grid-template-columns:1.45fr .55fr;align-items:end;gap:65px;margin-bottom:45px}
+#view-home .rd-editorial-heading h2,#view-home .rd-process-title h2,#view-home .rd-author h2,#view-home .rd-promo-content h2{font:500 clamp(53px,5.8vw,89px)/1.07 'Oswald',sans-serif;letter-spacing:.003em;margin:20px 0 0;color:#f3ebdd}
+#view-home .rd-editorial-heading>p,#view-home .rd-process-title>p{color:#bfc2c0;line-height:1.9;font-size:14px;margin:0}
+#view-home .rd-feature-photostory{display:grid;grid-template-columns:1.2fr .8fr;min-height:515px;border:1px solid #60544f;overflow:hidden;background:#181b1b}
+#view-home .rd-feature-image{overflow:hidden;min-height:500px;position:relative;background:#222}
+#view-home .rd-feature-image img{width:100%;height:100%;object-fit:cover;filter:grayscale(.58) brightness(.66) contrast(1.2);transition:transform .9s}
+#view-home .rd-feature-photostory:hover .rd-feature-image img{transform:scale(1.04)}
+#view-home .rd-feature-image:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 55%,#10141470)}
+#view-home .rd-feature-side{padding:clamp(35px,4.5vw,75px);display:flex;flex-direction:column;justify-content:center;position:relative;background:radial-gradient(ellipse at 100% 0%,#4b2a2733,transparent 65%),#1c2020}
+#view-home .rd-side-top{display:flex;justify-content:space-between;align-items:center;gap:20px}
+#view-home .rd-round-mark{border:1px solid #a5a09a;border-radius:50%;width:44px;height:44px;display:grid;place-items:center;color:#d8afa1;font:28px Georgia,serif}
+#view-home .rd-feature-side h3{font:500 clamp(40px,4.2vw,65px)/1.09 'Oswald',sans-serif;margin:35px 0 22px}
+#view-home .rd-feature-side>p{color:#c5c8c1;font-size:14px;line-height:1.9;max-width:450px}
+#view-home .rd-mini-line{display:flex;gap:15px;justify-content:space-between;flex-wrap:wrap;border-top:1px solid #79655b;margin-top:33px;padding-top:20px;color:#c7a79e;font:600 9px 'IBM Plex Mono',monospace}
+#view-home .rd-process{padding:105px 0 115px;background:#0d0f10;border-block:1px solid #564b47}
+#view-home .rd-process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+#view-home .rd-process-card{min-height:500px;position:relative;isolation:isolate;overflow:hidden;border:1px solid #71645b;background:#17181a;transition:transform .3s,border-color .3s}
+#view-home .rd-process-card:hover{transform:translateY(-5px);border-color:#b74f4b}
+#view-home .rd-process-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(.7) contrast(1.14) brightness(.7);z-index:-2;transition:transform .7s}
+#view-home .rd-process-card:hover>img{transform:scale(1.045)}
+#view-home .rd-process-mask{position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#080a0afa 0%,#0b0b0bbe 32%,#0c0c0c05 80%),linear-gradient(0deg,transparent 70%,#090a0a70)}
+#view-home .rd-process-content{position:absolute;bottom:0;left:0;right:0;padding:35px}
+#view-home .rd-process-content>span{color:#e6a29c;font:700 11px 'IBM Plex Mono',monospace;letter-spacing:.12em}
+#view-home .rd-process-content h3{font:500 clamp(42px,4vw,65px)/1.12 'Oswald',sans-serif;margin:16px 0}
+#view-home .rd-process-content p{color:#d2cbc2;font:400 13px/1.7 'Manrope',sans-serif;max-width:310px}
+#view-home .rd-cities-promo{position:relative;isolation:isolate;min-height:550px;display:flex;align-items:center;overflow:hidden;background:#090c0c}
+#view-home .rd-promo-photo{position:absolute;z-index:-3;inset:0;background:#151516 url('https://images.pexels.com/photos/7319078/pexels-photo-7319078.jpeg?auto=compress&cs=tinysrgb&w=1920') center 45%/cover no-repeat;filter:grayscale(.55) brightness(.72)}
+#view-home .rd-promo-overlay{position:absolute;z-index:-2;inset:0;background:linear-gradient(90deg,#080a0af4,#0b0c0cd8 34%,#100f0f80 77%,#0b0b0b60),linear-gradient(0deg,#090909b5,transparent 50%)}
+#view-home .rd-promo-content{padding-block:100px}
+#view-home .rd-promo-content h2{max-width:890px}
+#view-home .rd-promo-content p{max-width:560px;color:#d4cdc6;line-height:1.85;margin:25px 0 28px;font-size:15px}
+#view-home .rd-promo-meta{font:700 10px 'IBM Plex Mono',monospace;color:#cdbdb1;margin-top:25px;letter-spacing:.09em}
+#view-home .rd-author{padding:105px 0;background:#171919;border-top:1px solid #554d49}
+#view-home .rd-author-layout{display:grid;grid-template-columns:1fr 310px;gap:70px;align-items:center}
+#view-home .rd-author h2{margin-bottom:25px}
+#view-home .rd-author p{max-width:750px;color:#c7c4bc;line-height:1.9;font-size:14px}
+#view-home .rd-author-action{border:1px solid #685950;background:#201c1a;padding:35px;display:flex;flex-direction:column;gap:25px;align-items:stretch}
+#view-home .rd-author-action>span{color:#d1b8a8;font:700 11px/1.7 'IBM Plex Mono',monospace}
+#view-home .rd-questions{padding:90px 0 110px;background:#0d0f10}
+#view-home .rd-questions h2{font:500 clamp(48px,5vw,78px)/1.1 'Oswald',sans-serif;margin:18px 0 35px}
+#view-home .rd-faq{max-width:1030px;border-top:1px solid #6c5951}
+#view-home .rd-faq details{border-bottom:1px solid #69554b}
+#view-home .rd-faq summary{display:flex;justify-content:space-between;gap:20px;align-items:center;cursor:pointer;padding:23px 8px;font:600 16px 'Manrope',sans-serif;list-style:none}
+#view-home .rd-faq summary::-webkit-details-marker{display:none}
+#view-home .rd-faq summary span{color:#d84a4d;font-size:25px;transition:transform .2s}
+#view-home .rd-faq details[open] summary span{transform:rotate(45deg)}
+#view-home .rd-faq p{color:#c7bdb3;font-size:13px;max-width:700px;line-height:1.85;margin:0;padding:0 28px 25px 8px}
+@keyframes rd-breathe{from{transform:scale(1.015)}to{transform:scale(1.07)}}
+@media(max-width:1150px){#view-home .rd-hero{min-height:710px}#view-home .rd-herocopy h1{font-size:clamp(95px,11vw,145px)}#view-home .rd-editorial-heading,#view-home .rd-process-title{grid-template-columns:1fr .8fr;gap:30px}#view-home .rd-feature-side{padding:35px}#view-home .rd-process-card{min-height:430px}#view-home .rd-process-content{padding:24px}#view-home .rd-process-content h3{font-size:44px}}
+@media(max-width:780px){#view-home .rd-hero{min-height:770px}#view-home .rd-hero-inner{min-height:720px;align-items:flex-end;padding-top:220px;padding-bottom:40px}#view-home .rd-hero-art{background-position:57% 23%}#view-home .rd-hero-scrim{background:linear-gradient(0deg,#080a0afd 0%,#090a0af1 38%,#090a0a80 81%,#080b0b55),linear-gradient(90deg,#08090a8a,transparent)}#view-home .rd-herocopy h1{font-size:clamp(82px,16vw,128px);margin:25px 0}#view-home .rd-herocopy h2{font-size:26px}#view-home .rd-editorial,#view-home .rd-process{padding:65px 0}#view-home .rd-editorial-heading,#view-home .rd-process-title{display:block}#view-home .rd-editorial-heading h2,#view-home .rd-process-title h2,#view-home .rd-promo-content h2,#view-home .rd-author h2{font-size:clamp(46px,8vw,68px);margin-bottom:20px}#view-home .rd-feature-photostory{grid-template-columns:1fr}#view-home .rd-feature-image{min-height:320px;max-height:430px}#view-home .rd-feature-side{padding:38px}#view-home .rd-process-grid{grid-template-columns:1fr;gap:12px}#view-home .rd-process-card{min-height:350px}#view-home .rd-process-card>img{object-position:center 43%}#view-home .rd-process-content{padding:28px}#view-home .rd-cities-promo{min-height:485px}#view-home .rd-author-layout{grid-template-columns:1fr;gap:25px}#view-home .rd-author{padding:70px 0}#view-home .rd-author-action{max-width:390px}}
+@media(max-width:480px){#view-home .rd-hero{min-height:780px}#view-home .rd-hero-inner{min-height:750px;padding-top:230px;padding-bottom:30px}#view-home .rd-overline{font-size:9px;letter-spacing:.09em;gap:7px}#view-home .rd-overline span{width:21px}#view-home .rd-herocopy h1{font-size:clamp(73px,20vw,99px);line-height:.84;margin:25px 0}#view-home .rd-herocopy h2{font-size:22px}#view-home .rd-herocopy>p{font-size:13px}#view-home .rd-hero-actions{display:grid;gap:10px;margin:27px 0}#view-home .rd-hero-actions button{width:100%}#view-home .rd-hero-foot{font-size:8px;gap:8px 14px}#view-home .rd-hero-bottom{font-size:8px}#view-home .rd-feature-side h3{font-size:43px}#view-home .rd-mini-line{gap:8px;font-size:8px}#view-home .rd-process-card{min-height:350px}#view-home .rd-author-action{padding:26px}#view-home .rd-cities-promo{min-height:490px}#view-home .rd-promo-content{padding:75px 0}}
+@media(prefers-reduced-motion:reduce){#view-home .rd-hero-art{animation:none}#view-home *{transition:none!important}}
