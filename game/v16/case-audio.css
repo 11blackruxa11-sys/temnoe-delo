@@ -1,0 +1,17 @@
+/* Shared detective music + VFX controls: compact, accessible, separate toggles. */
+.case-music-button,#caseFxSwitch{touch-action:manipulation;white-space:nowrap;transition:border-color .18s,background .18s,color .18s}
+.case-music-button[aria-pressed="true"],#caseFxSwitch[aria-pressed="true"]{border-color:#9b5d50!important;color:#f4dfd4!important}
+.case-music-button[aria-pressed="false"],#caseFxSwitch[aria-pressed="false"]{color:#9c9996!important;opacity:.73}
+.topright{display:flex!important;align-items:center!important;gap:7px!important;flex-wrap:nowrap!important}
+.topright .case-music-button,.topright #caseFxSwitch{font-size:10px!important;line-height:1.2!important;min-height:34px!important;padding:6px 10px!important;width:auto!important}
+.head-actions .case-music-button,.head-actions #caseFxSwitch{font:700 10px 'IBM Plex Mono',monospace!important;min-height:35px!important;padding:7px 10px!important;letter-spacing:0!important}
+@media(max-width:760px){
+ .topright .demo-status{display:none!important}
+ .topright .case-music-button,.topright #caseFxSwitch{font-size:9px!important;min-height:36px!important;padding:4px 7px!important}
+ .head-actions .case-music-button,.head-actions #caseFxSwitch{font-size:9px!important;min-height:35px!important;padding:5px 7px!important}
+}
+@media(max-width:390px){
+ .topright{gap:4px!important}
+ .topright .case-music-button,.topright #caseFxSwitch{font-size:8px!important;padding:3px 5px!important;min-height:34px!important}
+ .head-actions .case-music-button,.head-actions #caseFxSwitch{font-size:8px!important;padding:5px!important}
+}
