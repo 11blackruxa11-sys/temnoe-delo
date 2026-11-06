@@ -89,8 +89,8 @@ function play(type="paper"){
 }
 function updateUI(){
  const music=document.getElementById("caseMusicSwitch"),fx=document.getElementById("caseFxSwitch");
- if(music){music.textContent=prefs.music?"♫ МУЗЫКА":"♫ МУЗ. ВЫКЛ.";music.setAttribute("aria-pressed",String(prefs.music));music.title=prefs.music?"Выключить фоновую музыку":"Включить фоновую музыку";}
- if(fx){fx.textContent=prefs.vfx?"◖ VFX":"◖ БЕЗ VFX";fx.setAttribute("aria-pressed",String(prefs.vfx));fx.title=prefs.vfx?"Выключить звуки действий":"Включить звуки действий";}
+ if(music){music.innerHTML='<span class="case-control-icon">♫</span><span class="case-control-label">'+(prefs.music?'МУЗЫКА':'ВЫКЛ.')+'</span>';music.setAttribute("aria-pressed",String(prefs.music));music.setAttribute("aria-label",prefs.music?"Выключить фоновую музыку":"Включить фоновую музыку");music.title=prefs.music?"Выключить фоновую музыку":"Включить фоновую музыку";}
+ if(fx){fx.innerHTML='<span class="case-control-icon">◖</span><span class="case-control-label">'+(prefs.vfx?'VFX':'ВЫКЛ.')+'</span>';fx.setAttribute("aria-pressed",String(prefs.vfx));fx.setAttribute("aria-label",prefs.vfx?"Выключить звуковые эффекты":"Включить звуковые эффекты");fx.title=prefs.vfx?"Выключить звуки действий":"Включить звуки действий";}
 }
 function mount(){
  const target=document.querySelector(city==="moscow"?"#soundBtn":"#soundToggle");if(!target)return;
@@ -108,8 +108,10 @@ function mount(){
 document.addEventListener("pointerdown",e=>{if(!started&&prefs.music&&e.isTrusted&&e.target.closest("button,a,[data-action],[data-trip],[data-tab]"))resume()},{passive:true});
 document.addEventListener("keydown",e=>{if(!started&&prefs.music&&e.isTrusted&&["Enter"," "].includes(e.key))resume()});
 document.addEventListener("visibilitychange",()=>{routeVolume();if(document.hidden){nextChord=0}});
-window.addEventListener("pagehide",()=>{routeVolume();stop()});
+window.addEventListener("pagehide",()=>{active=false;stop()});
 window.addEventListener("message",event=>{if(event.origin!==location.origin)return;if(event.data?.type==="td:case-visible"){active=!!event.data.active;routeVolume();if(active&&started)schedule()}});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){if(started&&prefs.music){routeVolume();schedule()}}});
+window.addEventListener("pageshow",()=>{active=true;if(started)routeVolume()});
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",mount);else mount();
 window.CaseAudio={play,start:resume,pause:()=>{active=false;routeVolume()},resume:()=>{active=true;if(started)routeVolume()},getPreferences:()=>({...prefs}),types:vfxNames};
 })();
