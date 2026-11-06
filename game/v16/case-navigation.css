@@ -30,3 +30,20 @@
 @media(max-width:780px){.case-clock{position:fixed;top:69px;right:8px;z-index:120;min-width:0;width:auto;gap:7px;padding:6px 8px}.case-clock-mark{display:none}.case-clock-info small{font-size:7px}.case-clock-info strong{font-size:21px}.case-clock-info span{font-size:7px}.case-clock #caseClockPause{min-width:29px;min-height:31px;padding:4px}.city-route-map{height:320px}.city-map-stop{padding:4px;min-height:34px}.city-map-stop span{font-size:9px}.city-map-stop small{font-size:7px}}
 @media(max-width:520px){.case-clock{top:66px;right:5px;padding:5px 7px}.case-clock-info strong{font-size:18px}.case-clock-info small{display:none}.case-clock-info span{font-size:6px}.city-route-map{height:350px}.city-map-stop{max-width:130px}.city-map-stop span{font-size:8px}.city-map-stop b{width:18px;height:18px;flex-shrink:0}.city-route-brief{padding:13px}}
 @media(prefers-reduced-motion:reduce){.city-map-line{stroke-dasharray:none}}
+
+
+/* v2.0: in-flow compact chronometer. Never floats over clues or dialogue. */
+.case-clock-rail{position:relative!important;z-index:50;display:flex;align-items:center;justify-content:flex-end;min-height:42px;padding:4px 15px;background:linear-gradient(90deg,#131617,#1a191a);border-bottom:1px solid #594841;box-sizing:border-box;overflow:hidden}
+.case-clock-rail .case-clock{position:static!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;width:auto!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:3px 7px 3px 10px!important;display:flex!important;gap:10px!important;align-items:center!important;box-shadow:none!important;border:1px solid #5b4a43!important;border-radius:5px;background:#121619e6!important;backdrop-filter:none!important;transform:none!important}
+.case-clock-rail .case-clock-mark,.case-clock-rail .case-clock-info>small,.case-clock-rail .case-clock-info>span{display:none!important}
+.case-clock-rail .case-clock-info{display:flex;align-items:center;flex:0 1 auto;gap:0}
+.case-clock-rail .case-clock-info strong{font:600 18px/1 'Oswald',sans-serif!important;letter-spacing:.08em!important;color:#ece0d0!important;white-space:nowrap;font-variant-numeric:tabular-nums!important}
+.case-clock-rail #caseClockPause{min-width:29px!important;min-height:29px!important;width:29px!important;height:29px!important;padding:2px!important;display:grid;place-items:center;border:1px solid #8d5c55!important;border-radius:3px;font:600 13px 'Manrope',sans-serif!important;line-height:1!important}
+.case-clock-rail .case-clock:before{content:"◷";font:20px/1 Georgia,serif;color:#c04e48}
+@media(max-width:760px){
+ .case-clock-rail{height:39px!important;min-height:39px!important;max-height:39px!important;padding:3px 10px!important}
+ .case-clock-rail .case-clock{padding:2px 5px 2px 8px!important;gap:7px!important}
+ .case-clock-rail .case-clock-info strong{font-size:16px!important}
+ .case-clock-rail .case-clock:before{font-size:18px}
+ .case-clock-rail #caseClockPause{height:27px!important;min-height:27px!important;width:27px!important;min-width:27px!important}
+}
