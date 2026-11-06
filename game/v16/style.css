@@ -107,3 +107,38 @@ body{background:radial-gradient(ellipse at 60% 0%,#1d2721,#090d0c 68%);color:var
 .witness-photo:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0000 0px,#0000 3px,#00000008 4px);pointer-events:none}
 .people-card img,.witness-photo img{transition:filter .2s}
 @media(max-width:520px){.people-card{gap:10px}.people-card img{width:92px;height:108px}.people-card strong{font-size:17px}}
+
+/* V27 · Russian noir design consistency for all in-game views */
+:root{--gold:#c8a87c;--bg:#080b0d;--panel:#111617;--panel-2:#181d1c;--text:#ede7da;--muted:#b4b2ae;--red:#92352f}
+body{background:radial-gradient(circle at 20% 20%,#1b2021,#070a0c 70%)!important;color:#ebe7df}
+#homeScreen,#gameScreen{background-color:transparent}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.11;background:repeating-linear-gradient(120deg,transparent 0px,transparent 70px,#8b8d82 71px,transparent 72px)}
+.topbar{background:linear-gradient(92deg,#101616,#080c0d);border-bottom:1px solid #aa8c6270;box-shadow:0 8px 35px #000c}
+.modal-root{background:#050709cc;backdrop-filter:blur(8px)}
+.modal-sheet{border:1px solid #a58e666f!important;background:radial-gradient(circle at 95% 0%,#39332935,transparent 38%),#111717!important;box-shadow:0 35px 100px #000e!important}
+.modal-pad{background:transparent}
+.modal-kicker{letter-spacing:.18em;font-weight:700;color:#c7a777!important}
+.map-surface{background:linear-gradient(140deg,#0b1012ae,#090c0b85),url('./assets/panorama.webp') center/cover!important;filter:grayscale(.35);border:1px solid #aa916e99!important}
+.map-surface .map-route{filter:drop-shadow(2px 3px 1px #000e)}
+.map-point{background:#101819f0!important;border:1px solid #a68d68!important;color:#eee6d6;box-shadow:0 6px 28px #000c!important}
+.map-point:hover{background:#282520!important;border-color:#ddb67e!important}
+.map-note{background:#101516ee!important;border-color:#a1876177!important;color:#dbd5c9}
+.witness-photo img,.people-card img{filter:grayscale(1) contrast(1.25) brightness(.91)!important}
+.people-card{background:#131a1b!important;border:1px solid #927e657a!important;box-shadow:0 10px 23px #0008}
+.people-card strong{font-family:Georgia,serif;letter-spacing:.01em}
+.people-card:hover{border-color:#caaa7c!important;background:#202523!important}
+.interrogation-profile{background:#151919!important;border:1px solid #a58b675e!important}
+.profile-sheet{background:linear-gradient(140deg,#24241e,#141817)!important}
+.interview-stamp{border:2px double #9e493b!important;color:#c5816a!important;transform:rotate(-3deg)}
+.story-chapter,.logic-paper,.logic-step,.cross-sheet{background:linear-gradient(135deg,#232620,#111717)!important;border-color:#977e5c88!important}
+.logic-option{background:#121a1a;border-color:#89795f}.logic-option:hover{background:#242a26}
+.small-action.primary{background:linear-gradient(140deg,#dfbe8b,#ab8655)!important;color:#101413}
+.small-action:not(.primary){background:#1d2421;border-color:#9b836278;color:#e8d2b3}
+.small-action:not(.primary):hover{border-color:#ddbd8b;background:#2d2b23}
+.evidence-art,.evidence-object{filter:contrast(1.02)}
+.story-cover img{filter:grayscale(.7) contrast(1.2) brightness(.77)!important}
+.people-card img{border:5px solid #c7bba4!important;border-radius:0!important;box-shadow:0 7px 15px #0009}
+.witness-photo{border-color:#c6b89c!important;border-radius:0!important}
+h1,h2,.modal-pad h2,.map-head h2{color:#ebe0ca}
+.modal-pad h2,.map-head h2{font-family:Georgia,serif}
+@media(max-width:700px){.topbar{box-shadow:0 4px 15px #000a}.modal-sheet{border-left:0;border-right:0}}
