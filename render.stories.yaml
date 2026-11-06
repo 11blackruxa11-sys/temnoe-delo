@@ -1,0 +1,23 @@
+# Тёмное дело: только сервер заявок и база.
+# Apply after reviewing the plan; this blueprint does not touch the static game website.
+services:
+  - type: web
+    name: temnoe-delo-stories-api
+    runtime: python
+    plan: free
+    region: frankfurt
+    buildCommand: pip install -r stories-requirements.txt
+    startCommand: uvicorn stories_api:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: DATABASE_URL
+        fromDatabase:
+          name: temnoe-delo-stories-db
+          property: connectionString
+databases:
+  - name: temnoe-delo-stories-db
+    plan: free
+    region: frankfurt
+    databaseName: temnoe_delo_stories_db
+    user: temnoe_delo_stories_db_user
