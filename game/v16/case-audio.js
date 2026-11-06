@@ -105,8 +105,8 @@ function mount(){
  document.addEventListener("click",capture,true);
  updateUI();
 }
-document.addEventListener("pointerdown",e=>{if(!started&&prefs.music&&e.isTrusted&&e.target.closest("button,a,[data-action],[data-trip],[data-tab]"))resume()},{passive:true});
-document.addEventListener("keydown",e=>{if(!started&&prefs.music&&e.isTrusted&&["Enter"," "].includes(e.key))resume()});
+document.addEventListener("pointerdown",e=>{if(prefs.music&&active&&e.isTrusted&&e.target.closest("button,a,[data-action],[data-trip],[data-tab]")&&(!started||ctx?.state==="suspended"))resume()},{passive:true});
+document.addEventListener("keydown",e=>{if(prefs.music&&active&&e.isTrusted&&["Enter"," "].includes(e.key)&&(!started||ctx?.state==="suspended"))resume()});
 document.addEventListener("visibilitychange",()=>{routeVolume();if(document.hidden){nextChord=0}});
 window.addEventListener("pagehide",()=>{active=false;stop()});
 window.addEventListener("message",event=>{if(event.origin!==location.origin)return;if(event.data?.type==="td:case-visible"){active=!!event.data.active;routeVolume();if(active&&started)schedule()}});
