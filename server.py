@@ -1,30 +1,19 @@
-"""Public interactive preview for ТЁМНОЕ ДЕЛО.
-
-Archived previous versions remain unchanged in quest-v2/ and temnoe-site-pack.zip.
-Real payments, accounts and author payouts are intentionally disabled in this preview.
+"""Interactive single-city preview for ТЁМНОЕ ДЕЛО (Novorossiysk).
+Full open access; no account, payment or production backend in this demo.
+Original site archives remain untouched.
 """
 from pathlib import Path
-
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
-BASE = Path(__file__).resolve().parent
-SITE = BASE / "site"
-INDEX = SITE / "index.html"
+BASE=Path(__file__).resolve().parent
+SITE=BASE/"site"
+app=FastAPI(title="ТЁМНОЕ ДЕЛО: Новороссийск",docs_url=None,redoc_url=None,openapi_url=None)
 
-app = FastAPI(title="Тёмное дело: интерактивное демо", docs_url=None, redoc_url=None, openapi_url=None)
-
-
-@app.get("/api/health", include_in_schema=False)
+@app.get("/api/health")
 def health():
-    return {"status": "ok", "preview": "noir-v17-inspired", "interactive": INDEX.is_file()}
+    ok=(SITE/"index.html").exists() and (SITE/"v16"/"app.js").exists()
+    return JSONResponse({"status":"ok" if ok else "missing_files","demo":"novorossiysk-v17","full_access":True},status_code=200 if ok else 503)
 
-
-@app.get("/", include_in_schema=False)
-@app.get("/index.html", include_in_schema=False)
-def homepage():
-    return FileResponse(INDEX, media_type="text/html")
-
-
-app.mount("/assets", StaticFiles(directory=str(SITE)), name="assets")
+app.mount("/",StaticFiles(directory=str(SITE),html=True),name="site")
