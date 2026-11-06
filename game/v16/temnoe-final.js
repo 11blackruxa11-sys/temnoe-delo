@@ -3,7 +3,7 @@
   const $=(sel,root=document)=>root.querySelector(sel);
   const $$=(sel,root=document)=>Array.from(root.querySelectorAll(sel));
   const routes=new Set(["home","cities","cases","about","submit","play","moscow-case","moscow"]);
-  const title={home:"Главная",cities:"Архив городов",cases:"Дело №001",about:"О проекте",submit:"Добавить историю",play:"Расследование", "moscow-case":"Москва · Либерея",moscow:"Либерея · Расследование"};
+  const title={home:"Главная",cities:"Архив городов",cases:"Дело №001",about:"О проекте",submit:"Стать автором",play:"Расследование", "moscow-case":"Москва · Либерея",moscow:"Либерея · Расследование"};
   const nav=$("#primaryNav"),mobile=$("#mobileMenu"),frame=$("#gameFrame"),moscowFrame=$("#moscowFrame");
   let frameLoaded=false,moscowFrameLoaded=false,sound=false,audio=null;
   function tone(type="click"){
@@ -88,16 +88,18 @@
     const saved=JSON.parse(localStorage.getItem(key)||"null");
     if(saved)for(const [name,val] of Object.entries(saved)){
       const field=form.elements.namedItem(name);if(!field)continue;
-      if(field instanceof RadioNodeList)field.value=val;
+      if(field instanceof RadioNodeList)field.value=(val==="idea"?"author":val);
       else if(field.type==="checkbox")field.checked=val==="on";else field.value=val;
     }
   }catch(e){}
+  if(form.elements.namedItem("submissionType")?.value==="idea")form.elements.namedItem("submissionType").value="author";
   form.addEventListener("input",save);form.addEventListener("change",save);
   const copyText=()=>{const v=values();return ["ТЁМНОЕ ДЕЛО / ЗАЯВКА","Тип: "+(v.submissionType||""),"Город: "+(v.city||""),"Название: "+(v.storyTitle||""),"История: "+(v.storyBody||""),"Источник: "+(v.source||""),"Контакт: "+(v.contact||"")].join("\n\n");};
   $("#copyStory").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(copyText());status.textContent="Заявка скопирована. Это ещё не отправка редакции.";tone("success");}catch(e){status.textContent="Не удалось скопировать автоматически. Проверь разрешение браузера."; }});
   form.addEventListener("submit",async e=>{
     e.preventDefault();if(!form.reportValidity())return;
     const v=values(),btn=$('button[type="submit"]',form);
+    if(!["author","creation"].includes(v.submissionType)){status.textContent="Выбери способ участия в авторской программе.";return;}
     btn.disabled=true;status.textContent="Проверяем возможность отправки в редакцию…";save();
     try {
       const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),18000);
