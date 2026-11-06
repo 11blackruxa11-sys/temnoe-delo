@@ -42,3 +42,29 @@
 .scene-theme-review .scene-hotspot-3{top:47%;left:55%}
 @media(max-width:780px){.moscow-scene.location-scene{min-height:450px}.scene-hotspot small{display:none}.scene-hotspot{padding:5px;border-radius:50%;max-width:none}.scene-hotspot span{width:31px;height:31px}.moscow-scene .scene-copy{padding-top:140px}.scene-hotspot-3{top:38%!important;left:60%!important}}
 @media(max-width:490px){.moscow-scene.location-scene{min-height:440px}.scene-caption{top:11px;left:10px;right:10px;font-size:8px}.moscow-scene .scene-copy{padding-top:128px}.moscow-scene .scene-copy h2{font-size:39px}.moscow-scene .scene-copy p{font-size:11px;line-height:1.6}.scene-hotspot-1{top:16%!important;left:14%!important}.scene-hotspot-2{top:27%!important;right:18%!important}.scene-hotspot-3{top:35%!important;left:52%!important}}
+
+
+/* Distinct visual identity for each investigative section. No generic repeated banner. */
+.section-scene{min-height:400px;background:#101417;position:relative}
+.section-scene .scene-image{background-position:center center;background-size:cover;filter:grayscale(.47) contrast(1.28) brightness(.76);transform:scale(1.03)}
+.section-scene .scene-overlay{background:linear-gradient(90deg,#070a0a9e 0%,#10111058 66%),linear-gradient(0deg,#080b0cf9 0%,#080b0ca4 42%,#080b0c12 89%)}
+.section-scene-stamp{position:absolute;top:20px;right:22px;z-index:3;max-width:50%;border:1px solid #bc8175;background:#141312c7;padding:9px 12px;color:#e2b7a5;font:700 9px/1.55 'IBM Plex Mono',monospace;text-align:right;letter-spacing:.1em}
+.section-scene .scene-copy{position:relative;z-index:2;max-width:900px}
+.scene-section-travel .scene-image{background-position:43% 54%}
+.scene-section-travel:after{content:"01—07 / КАРТА ДЕЛА";position:absolute;z-index:1;top:45%;left:8%;transform:rotate(-5deg);font:700 11px 'IBM Plex Mono',monospace;color:#c9b6a4b2;border:1px solid #bba38d80;padding:10px 16px;pointer-events:none}
+.scene-section-board .scene-image{background-position:50% 35%;filter:grayscale(.5) contrast(1.26) brightness(.7) sepia(.13)}
+.scene-section-board:after{content:"НЕ ЗАКРЫТО";position:absolute;top:31%;right:11%;z-index:1;color:#d76461b0;border:3px double #af4644a8;padding:6px 13px;transform:rotate(12deg);font:700 20px 'Oswald',sans-serif;letter-spacing:.1em;pointer-events:none}
+.scene-section-people .scene-image{background-position:45% 38%;filter:grayscale(.75) contrast(1.22) brightness(.69)}
+.scene-section-people:after{content:"ПРОТОКОЛ ДОПРОСА";position:absolute;top:32%;right:10%;z-index:1;color:#eee2d8a1;transform:rotate(-6deg);font:600 16px 'IBM Plex Mono',monospace;border-bottom:1px solid #d6bcb0b5;pointer-events:none}
+.scene-section-puzzles .scene-image{background-position:54% 45%;filter:grayscale(.4) sepia(.15) contrast(1.24) brightness(.72)}
+.scene-section-puzzles:after{content:"ВОПРОС № ?";position:absolute;top:36%;right:12%;z-index:1;color:#f6e4d198;font:700 40px 'Oswald',sans-serif;pointer-events:none}
+.scene-section-journal .scene-image{background-position:50% 44%;filter:grayscale(.5) sepia(.15) contrast(1.2) brightness(.75)}
+.scene-section-journal:after{content:"ЖУРНАЛ / 002";position:absolute;top:34%;right:13%;z-index:1;color:#d6c1adab;font:600 16px 'IBM Plex Mono',monospace;transform:rotate(6deg);pointer-events:none}
+.scene-section-historical .scene-image{background-position:50% 40%;filter:grayscale(.6) contrast(1.18) brightness(.74)}
+.scene-section-historical:after{content:"1933 / 1937 / 2026";position:absolute;top:32%;right:9%;z-index:1;color:#f1d0beb0;font:700 13px 'IBM Plex Mono',monospace;border:1px solid #d4af9e91;padding:10px 15px;pointer-events:none}
+@media(max-width:780px){
+ .section-scene{min-height:345px}
+ .section-scene-stamp{top:10px;right:10px;max-width:60%;font-size:8px;letter-spacing:0;padding:6px}
+ .section-scene:after{top:28%;right:10px;left:auto;font-size:12px}
+ .section-scene .scene-copy{padding-top:90px}
+}
