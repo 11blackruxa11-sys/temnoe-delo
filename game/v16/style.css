@@ -66,3 +66,29 @@
 .chapter-play{margin-top:12px;border:1px solid #cfb0838e;color:#e2c498;background:#5c462e55;padding:7px 12px;font-size:12px;font-weight:700;letter-spacing:.08em}
 .chapter-play:hover{background:#b7986c;color:#101411}
 @media(max-width:520px){.voice-controls{padding:10px;gap:6px}.voice-controls>span{flex-basis:100%}.voice-controls button{font-size:11px;padding:7px 10px}}
+
+/* V23 — consistent cinematic archive treatment across every interactive view */
+:root{--bg:#090d0c;--panel:#111815;--card:#1a211d;--accent:#c7a475;--line:#baa27d42;--ink:#ece5d5;--muted:#b7b2a9}
+body{background:radial-gradient(ellipse at 60% 0%,#1d2721,#090d0c 68%);color:var(--ink)}
+.topbar{background:#0a100ef5;border-bottom:1px solid #a78c5f73;box-shadow:0 6px 35px #000a}
+.brand-symbol{color:#c8aa7c}
+.toplink{color:#d2c4ac}
+.toplink:hover{border-color:#c7a475;color:#f4e4c4}
+.map-surface{background:linear-gradient(135deg,#06101086,#111915a0),url('./assets/panorama.webp') center/cover;border:1px solid #ac95738f;box-shadow:inset 0 0 65px #0008,0 12px 40px #0008}
+.map-surface:after{background:linear-gradient(0deg,#09100f7d,transparent 60%);z-index:0}
+.map-route{z-index:2!important;filter:drop-shadow(2px 3px 2px #000c)}
+.map-point{z-index:4;background:#131b19f0;border:1px solid #b49b78;box-shadow:0 8px 28px #000b;border-radius:1px}
+.map-point:hover{background:#292a22;border-color:#efd3a0;box-shadow:0 11px 33px #000b}
+.map-note{z-index:5;border:1px solid #ab957168;background:#101612ea;color:#eee2cd}
+.modal-sheet{background:#111714;border:1px solid #9c825d6a;box-shadow:0 30px 95px #000e}
+.modal-pad{background:radial-gradient(circle at 94% 0%,#40382538,transparent 35%)}
+.file-board>div,.dossier-card,.people-card,.logic-paper,.logic-step,.logic-grid article,.story-chapter,.profile-sheet{border-color:#a9936b69!important;background-color:#19221d}
+.witness-photo img,.people-card img{filter:grayscale(1) contrast(1.18) brightness(.9)!important}
+.witness-photo{background:#2a2b27;border:6px solid #c9bea2;box-shadow:0 10px 26px #000a;transform:rotate(-.8deg)}
+.people-card img{border-bottom:1px solid #9f8765}
+.story-cover img{filter:grayscale(.55) contrast(1.14)}
+.modal-kicker{color:#d5b480}
+.small-action{border-color:#a68d6a75}
+.small-action.primary{background:#c6a272;color:#141914}
+.modal-control-row .small-action:hover{border-color:#f0d3a3}
+@media(max-width:700px){.map-route{filter:none}.witness-photo{transform:none}}
