@@ -193,3 +193,25 @@ body{touch-action:pan-y}
 .report-stamp{font-size:10px;padding:4px 5px;margin:3px 0}
 .report-bottom{font-size:7px}
 }
+
+
+/* MOBILE HOTFIX: full-width location summary under scene, no squeezed text column. */
+@media(max-width:760px){
+ .game-screen,.game-main,.stage-column,.stage-footer{box-sizing:border-box!important;width:100%!important;max-width:100%!important;min-width:0!important}
+ .stage-footer{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:15px!important;align-items:stretch!important;justify-items:stretch!important;position:relative!important;padding:19px 16px 22px!important;min-height:0!important;height:auto!important}
+ .stage-footer>div:first-child{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;grid-column:1/-1!important;flex:none!important;float:none!important;clear:both!important}
+ .stage-footer .eyebrow-small{display:block!important;font-size:10px!important;line-height:1.4!important;margin-bottom:8px!important}
+ .stage-footer #sceneDescription{display:block!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;padding:0!important;white-space:normal!important;word-break:normal!important;overflow-wrap:break-word!important;hyphens:none!important;line-height:1.65!important;font-size:13px!important;text-align:left!important}
+ .stage-footer .map-link{display:flex!important;grid-column:1/-1!important;align-items:center!important;justify-content:center!important;width:100%!important;max-width:100%!important;min-width:0!important;min-height:49px!important;margin:0!important;padding:12px 14px!important;white-space:normal!important;text-align:center!important;flex:none!important}
+ .stage-footer .map-link span{margin-left:10px!important}
+ .stage-column,.stage-footer,.stage-window{overflow-wrap:normal}
+ .stage-column{display:block!important;flex:0 0 auto!important}
+ .mobile-nav{grid-template-columns:repeat(6,minmax(0,1fr))!important;overflow:hidden!important}
+ .mobile-nav button{max-width:100%;min-width:0!important;overflow:hidden;white-space:nowrap}
+ .mobile-nav button span{max-width:100%;text-overflow:ellipsis;overflow:hidden}
+}
+@media(max-width:390px){
+ .stage-footer{padding:16px 13px 21px!important}
+ .stage-footer #sceneDescription{font-size:12px!important;line-height:1.7!important}
+ .mobile-nav button span{font-size:8px!important;letter-spacing:-.02em!important}
+}
