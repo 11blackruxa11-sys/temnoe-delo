@@ -19,3 +19,26 @@
 .story-head{display:flex;gap:14px;align-items:end;flex-wrap:wrap;margin:0 0 18px}.story-head h2{width:100%;margin:0}.story-head p{flex:1;min-width:210px;color:#c7bbb0;line-height:1.6;max-width:660px}.story-head>span{font-size:11px;color:#d1ab7e}.story-cover{position:relative;min-height:190px;height:clamp(190px,25vw,300px);overflow:hidden;border-radius:8px}.story-cover img{width:100%;height:100%;object-fit:cover}.story-cover:after{content:'';position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.8))}.story-cover div{position:absolute;bottom:19px;left:20px;right:20px;z-index:1;color:#f5e7cf;font:italic 21px Georgia,serif}.story-chapters{display:grid;gap:8px;margin:18px 0}.story-chapter{display:flex;gap:18px;border:1px solid #4c4943;background:rgba(17,19,19,.8);border-radius:7px;padding:16px}.story-chapter>b{font:32px Oswald,sans-serif;color:#a67858;min-width:37px}.story-chapter div{display:grid;gap:7px}.story-chapter small{font-size:10px;color:#d6aa7f;letter-spacing:.12em}.story-chapter strong{font-size:17px}.story-chapter p{font-size:13px;color:#b9b2a8;line-height:1.65}.story-chapter.locked{opacity:.44}.story-notes{padding:17px;border:1px dashed #7f674b;border-radius:7px;margin:18px 0}.story-notes small{font-size:10px;color:#c7a17a;letter-spacing:.08em}.story-notes p{color:#dbc5a5;font-size:13px;line-height:1.6;padding-top:12px}.story-fiction{display:block;margin-top:15px;color:#948f85;font-size:11px;line-height:1.6}
 .hotspot-person i{background:#704f3a!important;border-color:#d7a984!important}.hotspot-person .tip{min-width:130px}
 @media(max-width:850px){.people-cards{grid-template-columns:1fr}.interrogation-layout{grid-template-columns:1fr}.interrogation-profile{display:grid;grid-template-columns:120px 1fr;gap:10px}.witness-photo{aspect-ratio:3/4}.interrogation-top{flex-direction:column}.interrogation-counter{align-self:flex-start}.interrogation-modal .modal-control-row{flex-wrap:wrap}.rail-story{display:none}}@media(max-width:490px){.interrogation-profile{grid-template-columns:105px 1fr}.question-button{flex-wrap:wrap}.question-button small{width:100%;padding-left:28px}.story-cover div{font-size:16px}.interview-intro p{font-size:14px}}
+
+
+/* V19: investigation logic puzzles */
+.logic-puzzle .modal-lead{max-width:880px;line-height:1.65}
+.logic-grid,.logic-chain{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:22px 0}
+.logic-grid article,.logic-paper,.logic-step{border:1px solid rgba(210,170,128,.35);border-radius:14px;min-width:0;padding:18px;background:linear-gradient(155deg,rgba(65,48,35,.6),rgba(17,22,26,.9));color:#efe5d7}
+.logic-grid article b,.logic-step small{font-weight:800;color:#e4b178;font-size:12px;letter-spacing:.14em}
+.logic-grid article p,.logic-step p,.logic-paper p{color:#d5c8b9;font-size:14px;line-height:1.65;margin:11px 0 4px}
+.logic-paper{cursor:pointer;text-align:left;position:relative;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.logic-paper:hover,.logic-paper.selected{border-color:#e8a66a;transform:translateY(-3px);box-shadow:0 14px 24px #0005}
+.logic-paper strong{display:block;font-size:22px;font-family:Oswald,Manrope,sans-serif;margin:14px 0 10px;letter-spacing:.025em}
+.logic-paper small{display:inline-block;background:#dec4a2;color:#292017;font-size:11px;font-weight:900;padding:5px 8px;border-radius:4px}
+.logic-paper span{display:block;margin-top:18px;font-weight:800;letter-spacing:.08em;font-size:11px;color:#e8b681}
+.logic-paper.selected span{color:#b7ddac}
+.logic-lightmap{display:flex;justify-content:center;align-items:center;gap:10px;background:linear-gradient(90deg,rgba(53,80,96,.45),rgba(71,50,33,.52));border-radius:12px;padding:15px 10px;color:#e8d7c3;font-size:12px;font-weight:800;letter-spacing:.12em}
+.logic-lightmap b{color:#da895d;font-size:22px}
+.logic-step{display:flex;flex-direction:column}
+.logic-option{appearance:none;display:block;text-align:left;background:#111a21;border:1px solid #4a5052;border-radius:9px;padding:12px;color:#ebdfd0;cursor:pointer;margin-top:10px;font-size:13px;line-height:1.45;min-height:56px;transition:background .16s,border-color .16s}
+.logic-option:hover{border-color:#d2ac85;background:#27313a}
+.logic-option.selected{border-color:#e4a469;background:linear-gradient(90deg,#5c2e20,#313037);box-shadow:inset 3px 0 0 #e9a368}
+.chosen-order{float:right;color:#b5d9ad;font-weight:900}
+@media(max-width:840px){.logic-grid,.logic-chain{grid-template-columns:1fr}.logic-lightmap{font-size:10px;flex-wrap:wrap}.logic-puzzle .modal-columns{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.logic-paper{transition:none}.logic-option{transition:none}}
