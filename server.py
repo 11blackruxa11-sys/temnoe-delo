@@ -58,4 +58,8 @@ if app is None:
     site_root = htmls[0].parent
     logger.warning("Serving archived static website: %s", site_root)
     app = FastAPI(title="Тёмное дело: оригинальная демоверсия")
+    @app.get("/api/health", include_in_schema=False)
+    def health():
+        return {"status": "ok", "mode": "archived-static-preview"}
+
     app.mount("/", StaticFiles(directory=str(site_root), html=True), name="site")
