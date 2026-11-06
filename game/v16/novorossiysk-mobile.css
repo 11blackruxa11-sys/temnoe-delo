@@ -274,3 +274,12 @@ body{touch-action:pan-y}
 .td-proof-sign{font:700 10px/1.5 'IBM Plex Mono',monospace;color:#6c3a34;margin-top:auto}
 .td-proof-sign b{display:block;color:#a4393d;border:2px solid #a4393d;width:max-content;max-width:100%;padding:5px 14px;transform:rotate(-5deg);margin:6px 0}
 @media(max-width:760px){.td-proof-document{padding:9px}.td-proof-sheet{padding:10px}.td-proof-sheet h3{font-size:23px}.td-proof-sheet .td-proof-detail{font-size:9px}.td-scene-legend strong{font-size:19px}.td-scene-legend small{font-size:8px}}
+
+
+/* Approved photo evidence: no diagram overlays, keep photo completely visible. */
+.td-approved-photo { width:100%; height:100%; position:relative; overflow:hidden; background:#10181a; }
+.td-approved-photo>img { display:block!important; width:100%!important; height:100%!important; object-fit:cover!important; border:0!important; filter:none!important; image-rendering:auto; }
+.td-approved-photo>span { position:absolute; bottom:8px; left:8px; right:8px; width:max-content; max-width:calc(100% - 16px); background:rgba(7,11,12,.87); border-left:2px solid #bd4143; color:#f2dfcf; font:600 9px/1.4 "IBM Plex Mono",monospace; padding:5px 9px; letter-spacing:.04em; pointer-events:none; }
+.evidence-object .face.front:has(.td-approved-photo) { padding:0!important; overflow:hidden; }
+.evidence-object .face.front:has(.td-approved-photo)>* { height:100%; }
+@media(max-width:760px) { .td-approved-photo>span { font-size:8px; bottom:6px; left:6px; } }
