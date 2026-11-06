@@ -68,3 +68,15 @@
  .section-scene:after{top:28%;right:10px;left:auto;font-size:12px}
  .section-scene .scene-copy{padding-top:90px}
 }
+
+
+/* Case 002 / Evidence dossiers: contextual photo reproductions with clear provenance */
+.moscow-evidence-thumb{width:100%;height:94px;position:relative;overflow:hidden;background:#16191b;border:1px solid #5c5149}
+.moscow-evidence-thumb>img{display:block;width:100%;height:100%;object-fit:cover;filter:grayscale(.62) sepia(.12) contrast(1.12) brightness(.77);transition:filter .25s,transform .25s}
+.moscow-evidence-thumb>span{position:absolute;top:7px;left:7px;background:#141718e8;border:1px solid #ac8070;padding:2px 7px;color:#f2d6c2;font:700 9px 'IBM Plex Mono',monospace}
+.evidence-card{padding:12px!important;min-height:205px}
+.evidence-card:hover .moscow-evidence-thumb>img{filter:grayscale(.35) sepia(.13) contrast(1.13) brightness(.9);transform:scale(1.045)}
+.moscow-clue-figure{margin:11px 0 22px;padding:8px;background:#c1b4a2;position:relative;border:1px solid #907967}
+.moscow-clue-figure img{display:block;width:100%;height:clamp(185px,27vw,280px);object-fit:cover;filter:grayscale(.5) sepia(.12) contrast(1.07)}
+.moscow-clue-figure figcaption{font:700 9px 'IBM Plex Mono',monospace;text-transform:uppercase;padding:8px 4px 2px;color:#38302a}
+@media(max-width:780px){.moscow-evidence-thumb{height:90px}.evidence-card{min-height:190px}.moscow-clue-figure img{height:215px}}
