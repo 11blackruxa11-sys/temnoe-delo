@@ -92,3 +92,18 @@ body{background:radial-gradient(ellipse at 60% 0%,#1d2721,#090d0c 68%);color:var
 .small-action.primary{background:#c6a272;color:#141914}
 .modal-control-row .small-action:hover{border-color:#f0d3a3}
 @media(max-width:700px){.map-route{filter:none}.witness-photo{transform:none}}
+
+/* MONOCHROME WITNESS DOSSIERS — all portraits in every interrogation state */
+.people-cards{gap:16px}
+.people-card{border:1px solid #9f86636e!important;background:linear-gradient(145deg,#1b211e,#101613);border-radius:3px;padding:13px;box-shadow:0 12px 25px #0005}
+.people-card:hover{border-color:#d2ad7a!important;background:#242820}
+.people-card img{width:112px;height:132px;object-fit:cover;object-position:center 22%;border:5px solid #beb6a8;border-radius:1px;box-shadow:0 6px 13px #0009;filter:grayscale(1) saturate(0) contrast(1.25) brightness(.93)!important}
+.people-card small{color:#bfbdaf}
+.people-card strong{color:#f3e7cf;font-family:Georgia,serif;font-size:20px}
+.people-card b{color:#d8b47e}
+.interrogation-profile{background:linear-gradient(140deg,#24261f,#121917);border:1px solid #b29b7777;border-radius:1px}
+.witness-photo{border-color:#cfbea0!important;border-width:7px;box-shadow:0 13px 30px #000b}
+.witness-photo img{filter:grayscale(1) saturate(0) contrast(1.2) brightness(.95)!important;object-fit:cover;object-position:center 22%}
+.witness-photo:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0000 0px,#0000 3px,#00000008 4px);pointer-events:none}
+.people-card img,.witness-photo img{transition:filter .2s}
+@media(max-width:520px){.people-card{gap:10px}.people-card img{width:92px;height:108px}.people-card strong{font-size:17px}}
