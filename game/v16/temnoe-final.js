@@ -24,8 +24,11 @@
     if(!routes.has(page))page="home";
     $$(".view").forEach(el=>{const active=el.id==="view-"+page;el.classList.toggle("active",active);el.setAttribute("aria-hidden",String(!active));});
     $$("[data-route]").forEach(el=>{if(el.closest(".primary-nav")){const active=el.dataset.route===page||(el.dataset.route==="cities"&&(page==="moscow-case"||page==="moscow"));el.classList.toggle("active",active);if(active)el.setAttribute("aria-current","page");else el.removeAttribute("aria-current");}});
-    if(page==="play"&&!frameLoaded){frame.src="./investigation-premium.html?play=1&asset=30.4";frameLoaded=true;}
-    if(page==="moscow"&&!moscowFrameLoaded){moscowFrame.src="./moscow-investigation.html?v=30.4";moscowFrameLoaded=true;}
+    if(page==="play"&&!frameLoaded){frame.src="./investigation-premium.html?play=1&asset=33";frameLoaded=true;}
+    if(page==="moscow"&&!moscowFrameLoaded){moscowFrame.src="./moscow-investigation.html?v=33";moscowFrameLoaded=true;}
+    // Pause hidden city soundscapes. Only the visible investigation may play.
+    frame?.contentWindow?.postMessage({type:"td:case-visible",active:page==="play"},location.origin);
+    moscowFrame?.contentWindow?.postMessage({type:"td:case-visible",active:page==="moscow"},location.origin);
     $("#siteFooter").hidden=page==="play"||page==="moscow";
     document.title=(title[page]||"ТЁМНОЕ ДЕЛО")+" | ТЁМНОЕ ДЕЛО";
     nav.classList.remove("open");mobile.setAttribute("aria-expanded","false");
