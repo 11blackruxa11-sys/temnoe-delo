@@ -74,3 +74,34 @@
  .submission-form fieldset label{font-size:12px;line-height:1.6}
  .submit-layout{min-width:0}
 }
+
+
+/* DISTINCT SECTION ART DIRECTED BACKGROUNDS / V29.2
+   Archive of cities = nightscape; About = investigative cinematic atmosphere;
+   Authors = historical source document. Maintain shared typographic system. */
+#view-cities .cities-hero-scene{background:#090f15;min-height:420px}
+#view-cities .cities-hero-scene>img{object-position:75% 40%;filter:saturate(.67) contrast(1.16) brightness(.76)}
+#view-cities .cities-hero-scene .inner-dark{
+ background:linear-gradient(90deg,#090c0ef7 0%,#0a0d0ee8 34%,#090e0ea3 60%,#0a111036 100%),linear-gradient(0deg,#080909dd,transparent 70%);
+}
+#view-cities .cities-hero-scene:after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 83% 32%,#c5965430,transparent 40%),linear-gradient(0deg,#06080a39,transparent)}
+#view-about .about-hero-scene{background:#131418;min-height:450px}
+#view-about .about-hero-scene>img{object-position:70% 47%;filter:grayscale(.46) contrast(1.26) brightness(.69) sepia(.12)}
+#view-about .about-hero-scene .inner-dark{
+ background:linear-gradient(90deg,#080b0dfb 0%,#090c0df0 28%,#0c0b0cca 60%,#0c0c0c4d 100%),radial-gradient(ellipse at 85% 15%,#5a352c4f,transparent 55%);
+}
+#view-about .about-hero-scene:after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 4px,#08070709 4px 5px)}
+#view-submit .author-hero-scene{min-height:490px;background:#151311}
+#view-submit .author-hero-scene>img{object-position:68% 52%;filter:sepia(.48) saturate(.62) contrast(1.22) brightness(.69);transform:scale(1.01)}
+#view-submit .author-hero-scene .inner-dark{
+ background:linear-gradient(90deg,#0b0b0cfb 0%,#0e0e0ce8 35%,#19100d9e 66%,#110f0d2b 100%),linear-gradient(0deg,#0e0b0bea,transparent 68%);
+}
+#view-submit .author-hero-scene:after{content:"";pointer-events:none;position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 77% 49%,#e2b06b26,transparent 45%)}
+#view-submit .author-hero-scene .inner-hero-content{padding-block:85px}
+@media(max-width:760px){
+ #view-cities .cities-hero-scene>img{object-position:66% center}
+ #view-about .about-hero-scene>img{object-position:58% center}
+ #view-submit .author-hero-scene>img{object-position:65% center}
+ #view-cities .cities-hero-scene .inner-dark,#view-about .about-hero-scene .inner-dark,#view-submit .author-hero-scene .inner-dark{background:linear-gradient(90deg,#0b0b0bf6,#0b0c0cdd 63%,#0b0c0c75 100%),linear-gradient(0deg,#08090ac9,transparent)}
+ #view-submit .author-hero-scene .inner-hero-content{padding-block:68px}
+}
