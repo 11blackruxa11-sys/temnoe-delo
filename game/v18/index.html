@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ТЁМНОЕ ДЕЛО — Невеста Семи ветров</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="topbar">
+    <div class="brand-wrap">
+      <div class="brand">ТЁМНОЕ ДЕЛО</div>
+      <div class="subtitle">Городские расследования, легенды и тайны России</div>
+    </div>
+    <nav class="nav">
+      <a href="#hero" class="nav-link active">Дела</a>
+      <a href="#map-card" class="nav-link">Карта городов</a>
+      <a href="#witnesses" class="nav-link">Для авторов</a>
+      <a href="#board" class="nav-link">О проекте</a>
+      <button id="soundToggle" class="icon-btn" aria-label="Звук включен">♫</button>
+    </nav>
+  </header>
+
+  <main class="dashboard">
+    <section id="hero" class="card hero-card">
+      <div class="hero-copy">
+        <div class="hero-logo">ТЁМНОЕ ДЕЛО</div>
+        <p>Городские расследования,<br>легенды и тайны России</p>
+        <button class="action-btn primary sfx-click" data-open="story-panel">НАЧАТЬ РАССЛЕДОВАНИЕ <span>→</span></button>
+      </div>
+      <div class="hero-scene">
+        <div class="hero-glow"></div>
+        <div class="hero-desk">
+          <div class="camera-prop"></div>
+          <div class="file-prop">ДЕЛО №001</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card case-card">
+      <div class="case-photo polaroid"></div>
+      <div class="case-copy">
+        <span class="eyebrow red">ПЕРВОЕ ДЕЛО</span>
+        <h2>НОВОРОССИЙСК</h2>
+        <h3>НЕВЕСТА СЕМИ ВЕТРОВ</h3>
+        <p>Легенда о девушке, которая исчезла на перевале. Спустя годы её снова видят в тумане. Что это — мистика или тщательно скрытая правда?</p>
+        <button class="action-btn sfx-click" data-open="game-panel">НАЧАТЬ ДЕЛО <span>→</span></button>
+      </div>
+    </section>
+
+    <section id="map-card" class="card map-card">
+      <div class="map-title">
+        <h2>НОВОРОССИЙСК</h2>
+        <p>Карта расследования</p>
+      </div>
+      <div class="map-surface">
+        <button class="map-pin sfx-hover" style="left:72%; top:18%" data-pin="Перевал «Семь ветров»">Перевал «Семь ветров»</button>
+        <button class="map-pin sfx-hover" style="left:22%; top:36%" data-pin="Наблюдательный пост">Наблюдательный пост</button>
+        <button class="map-pin sfx-hover" style="left:19%; top:65%" data-pin="Городской архив">Городской архив</button>
+        <button class="map-pin sfx-hover" style="left:80%; top:55%" data-pin="Служебная дорога">Служебная дорога</button>
+        <button class="map-pin sfx-hover" style="left:62%; top:75%" data-pin="Причал №7">Причал №7</button>
+      </div>
+    </section>
+
+    <section id="witnesses" class="card people-card">
+      <div class="section-title">ПЕРСОНАЖИ ДЕЛА</div>
+      <div class="person-list" id="personList">
+        <button class="person-item active sfx-hover" data-person="kuznetsov">
+          <div class="avatar oldman"></div>
+          <div><strong>Кузнецов В.Л.</strong><span>Свидетель</span></div>
+        </button>
+        <button class="person-item sfx-hover" data-person="morozova">
+          <div class="avatar woman"></div>
+          <div><strong>Морозова Е.А.</strong><span>Архивист</span></div>
+        </button>
+        <button class="person-item sfx-hover" data-person="dehtyarev">
+          <div class="avatar man"></div>
+          <div><strong>Дегтярёв С.А.</strong><span>Бывший сотрудник</span></div>
+        </button>
+        <button class="person-item sfx-hover" data-person="ryabin">
+          <div class="avatar beard"></div>
+          <div><strong>Рябинин И.Г.</strong><span>Местный житель</span></div>
+        </button>
+      </div>
+    </section>
+
+    <section class="card interview-card" id="leftInterview">
+      <div class="section-title with-small">
+        <div>
+          <div>ДОПРОС: КУЗНЕЦОВ В.Л.</div>
+          <small>Бывший смотритель поста</small>
+        </div>
+      </div>
+      <div class="interview-layout">
+        <div class="portrait portrait-kuznetsov"></div>
+        <div class="question-panel">
+          <button class="question-item active sfx-hover">Что вы видели в ту ночь?</button>
+          <button class="question-item sfx-hover">Кого ещё там видели?</button>
+          <button class="question-item sfx-hover">Почему не сообщили сразу?</button>
+          <button class="question-item sfx-hover">Что стало с девушкой?</button>
+          <button class="action-btn small sfx-click" data-sfx="voice">ЗАДАТЬ ВОПРОС <span>→</span></button>
+        </div>
+      </div>
+      <div class="audio-bar">
+        <button class="play-btn sfx-click">▶</button>
+        <div class="wave"></div>
+        <span>ТЕКСТОВЫЙ ДИАЛОГ</span>
+      </div>
+    </section>
+
+    <section class="card dossier-card">
+      <div class="paper">
+        <div class="paper-title">ДОСЬЕ: КУЗНЕЦОВ В.Л.</div>
+        <div class="paper-head">
+          <div class="paper-photo"></div>
+          <div class="paper-lines">
+            <p><strong>Возраст:</strong> 67 лет</p>
+            <p><strong>Род занятий:</strong> бывший смотритель наблюдательного поста</p>
+            <p><strong>Статус:</strong> свидетель</p>
+            <p><strong>Особенность:</strong> был на месте событий в ночь исчезновения</p>
+          </div>
+        </div>
+        <div class="stamp">СВИДЕТЕЛЬ</div>
+      </div>
+    </section>
+
+    <section class="card interview-card" id="rightInterview">
+      <div class="section-title with-small">
+        <div>
+          <div>ДОПРОС: МОРОЗОВА Е.А.</div>
+          <small>Сотрудник городского архива</small>
+        </div>
+      </div>
+      <div class="interview-layout right">
+        <div class="portrait portrait-morozova"></div>
+        <div class="question-panel">
+          <button class="question-item sfx-hover">Что есть в архиве по делу?</button>
+          <button class="question-item sfx-hover">Сохранились ли документы?</button>
+          <button class="question-item sfx-hover">Кто мог скрыть информацию?</button>
+          <button class="question-item sfx-hover">Есть ли новые данные?</button>
+          <button class="action-btn small sfx-click" data-sfx="voice">ЗАДАТЬ ВОПРОС <span>→</span></button>
+        </div>
+      </div>
+      <div class="audio-bar">
+        <button class="play-btn sfx-click">▶</button>
+        <div class="wave"></div>
+        <span>ТЕКСТОВЫЙ ДИАЛОГ</span>
+      </div>
+    </section>
+
+    <section class="card clues-card">
+      <div class="section-title between">
+        <div>НАЙДЕННЫЕ УЛИКИ <span class="count">(8/18)</span></div>
+        <button class="text-btn sfx-click" data-open="all-clues">ПОКАЗАТЬ ВСЕ →</button>
+      </div>
+      <div class="clue-strip">
+        <button class="clue-card active sfx-hover" data-clue="photo">
+          <div class="thumb thumb-photo"></div>
+          <span>Фотография<br>с перевала</span>
+        </button>
+        <button class="clue-card sfx-hover" data-clue="journal">
+          <div class="thumb thumb-journal"></div>
+          <span>Журнал<br>поста</span>
+        </button>
+        <button class="clue-card sfx-hover" data-clue="note">
+          <div class="thumb thumb-note"></div>
+          <span>Обрывок<br>записки</span>
+        </button>
+        <button class="clue-card sfx-hover" data-clue="medal">
+          <div class="thumb thumb-medal"></div>
+          <span>Кулон</span>
+        </button>
+        <button class="clue-card sfx-hover" data-clue="road">
+          <div class="thumb thumb-road"></div>
+          <span>Схема<br>дороги</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="card object-card" id="inspectPanel">
+      <div class="object-preview">
+        <div class="medallion"></div>
+      </div>
+      <div class="object-copy">
+        <div class="object-title">КУЛОН</div>
+        <p>Кулон найден на месте обрыва. На внутренней стороне выгравированы инициалы «А.С.» и дата — 17.06.1998.</p>
+        <button class="text-btn big sfx-click" data-open="clue-modal">УВЕЛИЧИТЬ</button>
+      </div>
+    </section>
+
+    <section class="card newspaper-card">
+      <div class="newspaper">
+        <div class="paper-top">ГОРОДСКАЯ ГАЗЕТА</div>
+        <div class="paper-name">НОВОРОССИЙСКИЙ РАБОЧИЙ</div>
+        <div class="paper-headline">ДЕВУШКА ПРОПАЛА<br>НА ПЕРЕВАЛЕ «СЕМЬ ВЕТРОВ»</div>
+        <div class="paper-sub">В Новороссийске ведутся поиски 20-летней Алины Сорокиной...</div>
+      </div>
+      <div class="newspaper-photo"></div>
+    </section>
+
+    <section class="card timeline-card">
+      <div class="section-title">ВОССТАНОВИТЕ ХРОНОЛОГИЮ СОБЫТИЙ</div>
+      <small class="section-note">Расставьте события в правильном порядке</small>
+      <div class="timeline-row">
+        <div class="timeline-item">
+          <div class="timeline-photo face"></div>
+          <span>17.06.1998</span>
+        </div>
+        <div class="timeline-arrow">→</div>
+        <div class="timeline-item">
+          <div class="timeline-photo road"></div>
+          <span>17.06.1998</span>
+        </div>
+        <div class="timeline-arrow">→</div>
+        <div class="timeline-item">
+          <div class="timeline-photo tower"></div>
+          <span>17.06.1998</span>
+        </div>
+        <div class="timeline-arrow">→</div>
+        <div class="timeline-item">
+          <div class="timeline-photo car"></div>
+          <span>17.06.1998</span>
+        </div>
+        <div class="timeline-arrow">→</div>
+        <div class="timeline-item missing">?</div>
+      </div>
+    </section>
+
+    <section id="board" class="card board-card">
+      <div class="section-title">ДОСКА РАССЛЕДОВАНИЯ</div>
+      <div class="board-wrap">
+        <div class="board-surface">
+          <div class="evidence note-a"></div>
+          <div class="evidence note-b"></div>
+          <div class="evidence note-c"></div>
+          <div class="evidence note-d"></div>
+          <div class="evidence note-e"></div>
+          <svg class="board-lines" viewBox="0 0 1000 560" preserveAspectRatio="none">
+            <line x1="140" y1="160" x2="470" y2="210"></line>
+            <line x1="470" y1="210" x2="700" y2="100"></line>
+            <line x1="470" y1="210" x2="790" y2="360"></line>
+            <line x1="140" y1="160" x2="790" y2="360"></line>
+            <line x1="220" y1="410" x2="470" y2="210"></line>
+            <line x1="700" y1="100" x2="220" y2="410"></line>
+          </svg>
+        </div>
+        <div class="board-side">
+          <div class="checklist">
+            <div class="check-title">СОБРАНО УЛИК:</div>
+            <div class="check-count">18/18</div>
+            <label><input type="checkbox" checked> Показания свидетелей</label>
+            <label><input type="checkbox" checked> Архивные документы</label>
+            <label><input type="checkbox" checked> Вещественные улики</label>
+            <label><input type="checkbox"> Хронология событий</label>
+          </div>
+          <button class="action-btn sfx-click" data-sfx="resolve">СДЕЛАТЬ ВЫВОД <span>→</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card verdict-card">
+      <div class="verdict-photo polaroid"></div>
+      <div class="verdict-copy">
+        <h2>ДЕЛО РАСКРЫТО</h2>
+        <h3>ИСТИНА О НЕВЕСТЕ СЕМИ ВЕТРОВ</h3>
+        <p>Алина Сорокина не стала жертвой мистики. Её гибель была трагическим несчастным случаем, который долгие годы скрывали из-за халатности и страха ответственности. Легенда же родилась из недосказанности, слухов и чувства вины.</p>
+        <button class="action-btn sand sfx-click" data-sfx="resolve">ЗАВЕРШИТЬ ДЕЛО <span>→</span></button>
+      </div>
+    </section>
+  </main>
+
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop" data-close="modal"></div>
+    <div class="modal-dialog">
+      <button class="modal-close sfx-click" data-close="modal">×</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
