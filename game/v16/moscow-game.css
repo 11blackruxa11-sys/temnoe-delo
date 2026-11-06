@@ -80,3 +80,27 @@
 .moscow-clue-figure img{display:block;width:100%;height:clamp(185px,27vw,280px);object-fit:cover;filter:grayscale(.5) sepia(.12) contrast(1.07)}
 .moscow-clue-figure figcaption{font:700 9px 'IBM Plex Mono',monospace;text-transform:uppercase;padding:8px 4px 2px;color:#38302a}
 @media(max-width:780px){.moscow-evidence-thumb{height:90px}.evidence-card{min-height:190px}.moscow-clue-figure img{height:215px}}
+
+
+/* Moscow-only photo grading and accurate scanned evidence documents */
+.moscow-scene .scene-image,.intro-bg{filter:grayscale(.5) sepia(.18) contrast(1.27) brightness(.57)!important}
+.moscow-scene:hover .scene-image{filter:grayscale(.38) sepia(.15) contrast(1.21) brightness(.68)!important}
+.moscow-clue-visual{height:100%;width:100%;display:grid;place-items:center;background:#1c1c1b;overflow:hidden;isolation:isolate}
+.moscow-clue-visual.moscow-photo{position:relative}
+.moscow-clue-visual.moscow-photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(.8) sepia(.12) brightness(.64) contrast(1.34)}
+.moscow-clue-visual.moscow-photo span{position:absolute;bottom:8px;left:8px;right:8px;background:#080a0bc4;padding:5px;color:#edcbbc;font:700 9px/1.35 'IBM Plex Mono',monospace;text-align:center}
+.moscow-clue-visual.moscow-paper{padding:9px;background:radial-gradient(ellipse at center,#534438 0,#151617 78%)}
+.moscow-paper-frame{height:100%;width:100%;display:flex;flex-direction:column;gap:10px;justify-content:center;align-items:stretch;text-align:left;background:repeating-linear-gradient(0deg,#0000 0 28px,#887c6920 28px 29px),linear-gradient(155deg,#dbcfba,#ad9a7f);box-shadow:6px 8px 20px #0008;transform:rotate(-1.7deg);padding:18px;color:#322921;overflow:hidden}
+.moscow-paper-frame small{font:700 9px/1.3 'IBM Plex Mono',monospace;border-bottom:1px solid #78695b;padding-bottom:7px;color:#64513f}
+.moscow-paper-frame strong{font:600 clamp(17px,2.2vw,31px)/1.08 'Oswald',sans-serif;overflow-wrap:anywhere;color:#261d18}
+.moscow-paper-frame p{font:600 12px/1.5 'Manrope',sans-serif;margin:0!important;color:#584a40!important}
+.moscow-paper-frame i{font:700 9px 'IBM Plex Mono',monospace;color:#9e3434;border:2px solid #a33c3d;padding:5px;align-self:flex-start;transform:rotate(-5deg);font-style:normal}
+.moscow-evidence-thumb>.moscow-clue-visual{height:100%;min-height:0}
+.moscow-evidence-thumb .moscow-paper-frame{gap:5px;padding:8px 11px}
+.moscow-evidence-thumb .moscow-paper-frame strong{font-size:14px}
+.moscow-evidence-thumb .moscow-paper-frame p{font-size:9px;line-height:1.2}
+.moscow-evidence-thumb .moscow-paper-frame i{font-size:7px;padding:2px 4px;border-width:1px}
+.moscow-evidence-thumb .moscow-paper-frame small{font-size:7px;padding-bottom:3px}
+.moscow-clue-figure{height:auto;min-height:235px}
+.moscow-clue-figure>.moscow-clue-visual{min-height:250px}
+@media(max-width:700px){.moscow-clue-figure>.moscow-clue-visual{min-height:215px}.moscow-paper-frame strong{font-size:24px}.moscow-paper-frame p{font-size:11px}}
