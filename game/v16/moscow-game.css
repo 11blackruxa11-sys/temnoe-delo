@@ -104,3 +104,58 @@
 .moscow-clue-figure{height:auto;min-height:235px}
 .moscow-clue-figure>.moscow-clue-visual{min-height:250px}
 @media(max-width:700px){.moscow-clue-figure>.moscow-clue-visual{min-height:215px}.moscow-paper-frame strong{font-size:24px}.moscow-paper-frame p{font-size:11px}}
+
+
+/* v34 / Two-sided physical dossier. Distinct faces, accessible flip on mobile. */
+.moscow-proof-flip{perspective:1000px;cursor:pointer;position:relative;display:block;width:min(100%,485px);height:385px;margin:16px auto 12px;touch-action:manipulation}
+.moscow-proof-flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .62s cubic-bezier(.23,.75,.26,1)}
+.moscow-proof-flip.flipped .moscow-proof-flip-inner{transform:rotateY(180deg)}
+.moscow-proof-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;border:7px solid #b4a38d;background:#d1c3a5;box-shadow:0 15px 30px #000a}
+.moscow-proof-face.proof-reverse{transform:rotateY(180deg);background:#d0bfa1;border-color:#b9a081}
+.moscow-proof-face .moscow-proof-document,.moscow-proof-face .moscow-proof-photo{height:100%;width:100%}
+.moscow-proof-document{position:relative;height:100%;background:radial-gradient(ellipse,#5a4e40 0,#151919 78%);padding:11px;display:flex;justify-content:center}
+.proof-paper{height:100%;width:94%;background:linear-gradient(165deg,#dccbb0,#b7a286);display:flex;flex-direction:column;padding:19px 23px;color:#352c25;box-shadow:7px 9px 19px #0008;transform:rotate(-1deg);min-width:0}
+.proof-header{display:flex;justify-content:space-between;gap:15px;border-bottom:1px solid #726251;padding-bottom:9px;font:700 9px 'IBM Plex Mono',monospace;letter-spacing:.015em}
+.proof-paper>strong{display:block;font:600 clamp(27px,3vw,42px)/1.05 'Oswald',sans-serif;margin:30px 0 19px;overflow-wrap:anywhere}
+.proof-paper>p{font:600 13px/1.5 'Manrope',sans-serif;color:#4a4035!important;margin:0!important}
+.proof-mark{margin:25px 0 0 auto;border:2px solid #a34139;color:#9f3836;padding:7px;font:700 13px 'Oswald',sans-serif;transform:rotate(-7deg)}
+.proof-paper-footer{font:700 8px 'IBM Plex Mono',monospace;margin-top:auto;border-top:1px solid #877566;padding-top:8px}
+.moscow-proof-photo{height:100%;width:100%;position:relative;background:#111d21}
+.moscow-proof-photo>img{height:100%;width:100%;object-fit:cover;filter:grayscale(.66) sepia(.1) contrast(1.2) brightness(.78)}
+.proof-photo-sticker{position:absolute;top:15px;left:15px;background:#151919ec;color:#ead8cb;font:700 10px 'IBM Plex Mono',monospace;padding:9px}
+.proof-photo-desc{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,#060807ef,#06080733);color:#f9ead4;font:600 24px 'Oswald',sans-serif;padding:43px 18px 14px}
+.proof-photo-desc small{display:block;font:700 9px 'IBM Plex Mono',monospace;color:#e2baac;margin-top:4px}
+.moscow-proof-back{height:100%;width:100%;background:repeating-linear-gradient(0deg,transparent 0 25px,#74634d16 25px 26px),linear-gradient(135deg,#ded0b7,#bda98e);padding:16px 19px;display:flex;flex-direction:column;gap:9px;color:#2d2821;overflow-y:auto}
+.back-heading{display:flex;justify-content:space-between;gap:9px;border-bottom:1px solid #8d7964;padding-bottom:7px;font:700 9px 'IBM Plex Mono',monospace}
+.moscow-proof-back h3{font:600 30px/.98 'Oswald',sans-serif!important;margin:1px 0 5px!important;color:#342923!important}
+.moscow-proof-back dl{display:grid;grid-template-columns:102px minmax(0,1fr);gap:6px 10px;margin:0}
+.moscow-proof-back dt{font:700 9px/1.35 'IBM Plex Mono',monospace;color:#854c47}
+.moscow-proof-back dd{margin:0;color:#3a302a;font:600 11px/1.35 'Manrope',sans-serif;overflow-wrap:anywhere}
+.back-pencil{border-left:3px solid #a54640;padding:8px 10px;background:#b9654619}
+.back-pencil small{font:700 9px 'IBM Plex Mono',monospace;color:#864039}
+.back-pencil p{font:600 11px/1.35 'Manrope',sans-serif!important;color:#342922!important;margin:4px 0 0!important}
+.back-stamp{border:2px solid #a24640;color:#9e393a;font:700 13px 'Oswald',sans-serif;padding:5px 10px;transform:rotate(-4deg);align-self:flex-end}
+.back-auth{font:500 8px 'IBM Plex Mono',monospace;color:#6e5d51;margin-top:auto;border-top:1px solid #7d6c56;padding-top:5px}
+.moscow-flip-actions{display:flex;justify-content:center;margin:0 0 17px}
+.moscow-flip-actions button{border:1px solid #a84948;color:#f0dccc;background:#892e2c;padding:11px 25px;font:700 12px 'Oswald',sans-serif;cursor:pointer}
+.moscow-evidence-thumb .moscow-proof-document,.moscow-evidence-thumb .moscow-proof-photo{height:100%}
+.moscow-evidence-thumb .proof-paper{padding:6px 10px;gap:3px}
+.moscow-evidence-thumb .proof-header{font-size:7px;padding-bottom:3px}
+.moscow-evidence-thumb .proof-paper strong{font-size:16px;margin:5px 0 2px}
+.moscow-evidence-thumb .proof-paper p{font-size:9px!important;line-height:1.2}
+.moscow-evidence-thumb .proof-mark{font-size:7px;margin:1px 0 0 auto;padding:2px 3px;border-width:1px}
+.moscow-evidence-thumb .proof-paper-footer{font-size:6px;padding-top:1px}
+.moscow-evidence-thumb .proof-photo-desc{font-size:14px;padding:25px 8px 6px}
+.moscow-evidence-thumb .proof-photo-desc small{display:none}
+@media(max-width:600px){
+ .moscow-proof-flip{height:370px;max-width:100%}
+ .moscow-proof-face{border-width:5px}
+ .moscow-proof-back{padding:12px;gap:6px}
+ .moscow-proof-back h3{font-size:26px!important}
+ .moscow-proof-back dl{grid-template-columns:85px minmax(0,1fr);gap:5px}
+ .moscow-proof-back dd{font-size:10px}
+ .back-pencil p{font-size:10px!important}
+ .proof-paper{padding:12px}
+ .proof-paper>strong{font-size:30px}
+}
+@media(prefers-reduced-motion:reduce){.moscow-proof-flip-inner{transition:none}}
