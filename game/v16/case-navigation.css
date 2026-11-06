@@ -1,0 +1,32 @@
+
+/* Shared city-case clock, travel/map controls, original editorial noir styling. */
+.case-clock{position:fixed;right:18px;top:78px;z-index:170;display:flex;align-items:center;gap:12px;min-width:235px;padding:11px 13px;background:#101418f2;color:#f3e6d8;border:1px solid #89665b;box-shadow:0 11px 33px #000b;backdrop-filter:blur(13px);pointer-events:auto}
+.case-clock-mark{font-size:24px;color:#c54544}
+.case-clock-info{display:grid;gap:0;flex:1}
+.case-clock-info small,.case-clock-info span{font:700 8px/1.5 'IBM Plex Mono',monospace;color:#d7afa1;letter-spacing:.04em}
+.case-clock-info strong{font:600 27px/1.15 'Oswald',sans-serif;font-variant-numeric:tabular-nums;letter-spacing:.04em}
+.case-clock-info span{color:#bcb0a6}
+#caseClockPause{background:#2b2020;color:#fff0de;border:1px solid #97665d;padding:9px;min-width:35px;min-height:37px;font-size:16px;flex-shrink:0}
+.case-clock.paused #caseClockPause{border-color:#a9a482;background:#323123}
+.case-clock:not(.running){opacity:.92}
+.city-route-brief{border:1px solid #80685d;background:linear-gradient(135deg,#312522,#161a1b);padding:20px;color:#e5d9c9}
+.city-route-brief small{font:700 10px 'IBM Plex Mono',monospace;color:#e8a89b}
+.city-route-brief h3{font:600 30px/1.1 'Oswald',sans-serif;color:#f2e7d7;margin:10px 0}
+.city-route-brief p{font-size:12px;line-height:1.9;color:#d0c2b7}
+.city-route-meta{font:700 9px 'IBM Plex Mono',monospace;color:#c5afa2}
+.city-route-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.city-route-actions button{background:#ae292d;border:1px solid #c94c45;color:#fff;padding:12px 18px;font:600 12px 'Oswald',sans-serif;min-height:44px}
+.city-route-actions button.secondary{background:#292728;border-color:#82695c}
+.city-route-map{position:relative;height:270px;overflow:hidden;border:1px solid #847064;background:radial-gradient(ellipse at 25% 40%,#5f50453d,transparent 55%),repeating-linear-gradient(25deg,#38332e 0 2px,transparent 2px 65px),repeating-linear-gradient(115deg,transparent 0 42px,#51504c40 42px 44px,transparent 44px 77px),#1c2224}
+.city-route-map:after{content:"СХЕМАТИЧНАЯ КАРТА · НЕ НАВИГАЦИЯ";position:absolute;bottom:9px;right:12px;color:#cfac9b;font:700 8px 'IBM Plex Mono',monospace}
+.city-route-map svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.city-map-line{stroke:#be4545;stroke-width:2.4;stroke-dasharray:6 6;fill:none;filter:drop-shadow(0 2px 2px #000)}
+.city-map-stop{position:absolute;transform:translate(-50%,-50%);background:#171a1ce8;border:1px solid #9a6f62;padding:7px;color:#eee4d5;min-height:38px;display:flex;align-items:center;gap:7px;text-align:left;max-width:200px}
+.city-map-stop:hover,.city-map-stop.active{background:#532c2b;border-color:#e6a69b}
+.city-map-stop b{width:23px;height:23px;background:#af363b;color:#fff;border-radius:50%;display:grid;place-items:center;font:600 11px 'Oswald',sans-serif}
+.city-map-stop span{font:600 11px/1.2 'Oswald',sans-serif}
+.city-map-stop small{display:block;font:700 8px 'IBM Plex Mono',monospace;color:#cfc1b7}
+.city-map-stop.visited b{background:#587b62}
+@media(max-width:780px){.case-clock{position:fixed;top:69px;right:8px;z-index:120;min-width:0;width:auto;gap:7px;padding:6px 8px}.case-clock-mark{display:none}.case-clock-info small{font-size:7px}.case-clock-info strong{font-size:21px}.case-clock-info span{font-size:7px}.case-clock #caseClockPause{min-width:29px;min-height:31px;padding:4px}.city-route-map{height:320px}.city-map-stop{padding:4px;min-height:34px}.city-map-stop span{font-size:9px}.city-map-stop small{font-size:7px}}
+@media(max-width:520px){.case-clock{top:66px;right:5px;padding:5px 7px}.case-clock-info strong{font-size:18px}.case-clock-info small{display:none}.case-clock-info span{font-size:6px}.city-route-map{height:350px}.city-map-stop{max-width:130px}.city-map-stop span{font-size:8px}.city-map-stop b{width:18px;height:18px;flex-shrink:0}.city-route-brief{padding:13px}}
+@media(prefers-reduced-motion:reduce){.city-map-line{stroke-dasharray:none}}
