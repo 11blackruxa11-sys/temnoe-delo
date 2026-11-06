@@ -36,6 +36,8 @@ tracks:'<path d="M121 46L175 46L220 352L168 352Z M328 46L380 46L335 352L286 352Z
 };
 const e=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function render(id,c,small=false){
+ const approved={photo:"./assets/evidence-photo-2112.svg",railing:"./assets/evidence-railing.svg",direction:"./assets/evidence-tripod.svg"};
+ if(approved[id])return '<div class="td-approved-photo"><img loading="eager" src="'+approved[id]+'" alt="Фотореалистичная реконструкция улики: '+String(c.name||"").replace(/"/g,"&quot;")+'"/><span>ФОТОРЕКОНСТРУКЦИЯ / ДЕЛО 001</span></div>';
  const [title,caption]=evidenceNotes[id]||[c.name,c.summary],background="./assets/"+(backgrounds[id]||"archive.webp");
  if(docs.has(id)){
  const detail=String(c.back||c.summary||"");
