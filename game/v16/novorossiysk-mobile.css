@@ -106,3 +106,29 @@ body{touch-action:pan-y}
 }
 @media(max-width:390px){.stage-window{height:58svh!important;min-height:330px!important}.location-list>.place-button{flex-basis:110px}.mobile-nav button span{font-size:8px!important}.history-research h2{font-size:34px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+
+/* Consistent photo-based case reconstructions: each artifact has its own visual identification */
+.clue-art{position:relative;width:100%;height:100%;min-height:260px;overflow:hidden;isolation:isolate;background:#11171b;border:1px solid #876d5f;display:grid;place-items:center}
+.clue-art>img{position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;filter:grayscale(.7) contrast(1.25) brightness(.57)}
+.clue-art-glaze{position:absolute;inset:0;z-index:-2;background:linear-gradient(160deg,#080d0d93,#040506c4),radial-gradient(ellipse at 60% 34%,#bc9a7229,transparent 60%)}
+.clue-art-sheet{width:76%;min-height:70%;background:linear-gradient(155deg,#c9bdab,#9c9386);color:#262a2c;padding:17px;transform:rotate(-4deg);box-shadow:10px 17px 20px #000a;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.clue-art-sheet>span{width:100%;border-bottom:1px solid #77736b;padding-bottom:8px;font:700 9px 'IBM Plex Mono',monospace;text-align:left;color:#574f49}
+.clue-art-sheet>i{font:normal 74px/.98 Georgia,serif;color:#43484a;margin:15px 0 4px;text-shadow:1px 2px #ffffff5c}
+.clue-art-sheet>strong{font:600 clamp(19px,2.4vw,32px)/1.1 'Oswald',sans-serif;max-width:100%;overflow-wrap:anywhere}
+.clue-art-sheet>small{font:700 9px/1.4 'IBM Plex Mono',monospace;color:#685549;margin-top:14px}
+.clue-art-caption{position:absolute;bottom:8px;left:8px;right:8px;color:#dfcabc;background:#101314be;padding:5px;text-align:center;font:700 8px 'IBM Plex Mono',monospace}
+.clue-art-small{min-height:0;border:0}
+.clue-art-small .clue-art-sheet{width:82%;padding:5px;min-height:65%}
+.clue-art-small .clue-art-sheet>span{display:none}
+.clue-art-small .clue-art-sheet>i{font-size:27px;margin:2px 0}
+.clue-art-small .clue-art-sheet>strong{font-size:9px;line-height:1.1}
+.clue-art-small .clue-art-sheet>small{display:none}
+.clue-art-small .clue-art-caption{display:none}
+.mini-evidence .clue-art,.dossier-card .clue-art{width:100%;height:100%}
+.mini-evidence .clue-art-sheet{width:79%}
+.dossier-card .clue-art{min-height:130px}
+.dossier-card .clue-art-sheet>i{font-size:36px}
+.dossier-card .clue-art-sheet>strong{font-size:11px}
+.evidence-art .clue-art{min-height:380px}
+@media(max-width:760px){.evidence-art .clue-art{min-height:240px}.evidence-art .clue-art-sheet{min-height:76%;width:73%}.evidence-art .clue-art-sheet>i{font-size:46px;margin:7px 0}.evidence-art .clue-art-sheet>strong{font-size:22px}.evidence-art .clue-art-sheet>small{font-size:8px}.dossier-card .clue-art{min-height:90px}}
