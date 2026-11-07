@@ -30,3 +30,14 @@
 .reverse-document p{font:inherit;margin:8px 0 12px;color:#322b22}
 .reverse-footer{margin-top:auto;padding-top:8px;border-top:1px solid #9e8b70;font:italic 11px/1.4 Georgia,serif;color:#675a48}
 @media(max-width:600px){.evidence-art .evidence-object{width:85%;aspect-ratio:1.02}.evidence-object .back{font-size:12px;padding:8px}.reverse-document{padding:9px}.reverse-footer{font-size:10px}}
+
+/* Investigative reports on evidence card reverse */
+.reverse-title{font:700 clamp(16px,1.8vw,22px)/1.15 Georgia,serif;text-transform:uppercase;color:#2c251d;margin:10px 0 14px}
+.reverse-label{font:700 10px/1.5 Arial,sans-serif;letter-spacing:.12em;color:#874337;margin-top:5px}
+.reverse-document .reverse-next{font-size:.92em;margin:6px 0 8px}
+.evidence-art{cursor:pointer}
+.evidence-art:focus-visible{outline:2px solid #c8a77b;outline-offset:4px}
+.evidence-object .back{font-size:clamp(12px,1.2vw,15px);line-height:1.35}
+.reverse-document{gap:2px}
+.reverse-footer{font-size:10px}
+@media(max-width:740px){.evidence-art .evidence-object{width:min(87%,400px);aspect-ratio:0.95}.reverse-title{font-size:15px;margin:5px 0}.reverse-document p{margin:4px 0 6px}.reverse-label{font-size:9px}.reverse-document{padding:9px}}
