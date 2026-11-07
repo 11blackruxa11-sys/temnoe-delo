@@ -2,10 +2,10 @@
   "use strict";
   const $=(sel,root=document)=>root.querySelector(sel);
   const $$=(sel,root=document)=>Array.from(root.querySelectorAll(sel));
-  const routes=new Set(["home","cities","cases","about","submit","play","moscow-case","moscow"]);
-  const title={home:"Главная",cities:"Архив городов",cases:"Дело №001",about:"О проекте",submit:"Стать автором",play:"Расследование", "moscow-case":"Москва · Либерея",moscow:"Либерея · Расследование"};
-  const nav=$("#primaryNav"),mobile=$("#mobileMenu"),frame=$("#gameFrame"),moscowFrame=$("#moscowFrame");
-  let frameLoaded=false,moscowFrameLoaded=false,sound=false,audio=null;
+  const routes=new Set(["home","cities","cases","about","submit","play","moscow-case","moscow","spb-case","spb"]);
+  const title={home:"Главная",cities:"Архив городов",cases:"Дело №001",about:"О проекте",submit:"Стать автором",play:"Расследование", "moscow-case":"Москва · Либерея",moscow:"Либерея · Расследование","spb-case":"Санкт-Петербург · Умирающий сфинкс",spb:"Умирающий сфинкс · Пролог"};
+  const nav=$("#primaryNav"),mobile=$("#mobileMenu"),frame=$("#gameFrame"),moscowFrame=$("#moscowFrame"),spbFrame=$("#spbFrame");
+  let frameLoaded=false,moscowFrameLoaded=false,spbFrameLoaded=false,sound=false,audio=null;
   function tone(type="click"){
     if(!sound)return;
     try {
@@ -23,13 +23,14 @@
     let page=decodeURIComponent(location.hash.slice(1).split("?")[0])||"home";
     if(!routes.has(page))page="home";
     $$(".view").forEach(el=>{const active=el.id==="view-"+page;el.classList.toggle("active",active);el.setAttribute("aria-hidden",String(!active));});
-    $$("[data-route]").forEach(el=>{if(el.closest(".primary-nav")){const active=el.dataset.route===page||(el.dataset.route==="cities"&&(page==="moscow-case"||page==="moscow"));el.classList.toggle("active",active);if(active)el.setAttribute("aria-current","page");else el.removeAttribute("aria-current");}});
+    $$("[data-route]").forEach(el=>{if(el.closest(".primary-nav")){const active=el.dataset.route===page||(el.dataset.route==="cities"&&(page==="moscow-case"||page==="moscow"||page==="spb-case"||page==="spb"));el.classList.toggle("active",active);if(active)el.setAttribute("aria-current","page");else el.removeAttribute("aria-current");}});
     if(page==="play"&&!frameLoaded){frame.src="./investigation-premium.html?play=1&asset=36.5";frameLoaded=true;}
+    if(page==="spb"&&!spbFrameLoaded){spbFrame.src="./spb-investigation.html?v=1";spbFrameLoaded=true;}
     if(page==="moscow"&&!moscowFrameLoaded){moscowFrame.src="./moscow-investigation.html?v=35";moscowFrameLoaded=true;}
     // Pause hidden city soundscapes. Only the visible investigation may play.
     frame?.contentWindow?.postMessage({type:"td:case-visible",active:page==="play"},location.origin);
     moscowFrame?.contentWindow?.postMessage({type:"td:case-visible",active:page==="moscow"},location.origin);
-    $("#siteFooter").hidden=page==="play"||page==="moscow";
+    $("#siteFooter").hidden=page==="play"||page==="moscow"||page==="spb";
     document.title=(title[page]||"ТЁМНОЕ ДЕЛО")+" | ТЁМНОЕ ДЕЛО";
     nav.classList.remove("open");mobile.setAttribute("aria-expanded","false");
     window.scrollTo({top:0,behavior:"instant"});
