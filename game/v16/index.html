@@ -125,12 +125,13 @@
 #view-cities .city-catalog-card:hover{border-color:#d2ab7f;transform:translateY(-2px)}
 #view-cities .city-catalog-card[hidden]{display:none!important}
 #view-cities .city-catalog-media{position:relative;display:block;aspect-ratio:1.82/1;min-height:0;overflow:hidden;background:#0e1416}
-#view-cities .city-catalog-media>img{position:absolute;top:0;left:0;width:100%;height:135%;object-fit:cover;object-position:center top;max-width:none;filter:contrast(1.08) saturate(.76) brightness(.8)}
+#view-cities .city-catalog-media>img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center top;max-width:none;transform:scale(1.4);transform-origin:center top;filter:contrast(1.08) saturate(.76) brightness(.8)}
 #view-cities .city-catalog-media:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 52%,#090d10a6 100%)}
 #view-cities .city-catalog-number{position:absolute;top:13px;left:14px;z-index:1;color:#f3dfc8;font:700 10px 'IBM Plex Mono',monospace;letter-spacing:.12em;background:#0a1011bb;border-left:2px solid #bc4841;padding:7px 10px}
 #view-cities .city-catalog-body{padding:20px 19px 21px!important;display:flex;flex-direction:column;align-items:stretch;flex:1;min-width:0;max-width:100%;box-sizing:border-box}
 #view-cities .city-catalog-location{color:#cda57e;font:700 10px/1.6 'IBM Plex Mono',monospace;letter-spacing:.07em}
 #view-cities .city-catalog-location span:last-child{color:#9da3a2}
+#view-cities .city-catalog-location .city-case-label{color:#cda57e}
 #view-cities .city-catalog-sep{color:#b44a45;margin:0 4px}
 #view-cities .city-catalog-body h3{font:600 clamp(23px,2.2vw,34px)/1.1 Oswald,sans-serif!important;color:#f5e6d4;margin:12px 0 9px!important;letter-spacing:0!important;overflow-wrap:normal;hyphens:none;min-height:2.16em}
 #view-cities .city-catalog-body p{font:500 12px/1.6 Manrope,Arial,sans-serif;color:#bdb7ac;margin:0 0 15px;min-height:3.2em}
@@ -176,44 +177,44 @@
 <div class="city-catalog-toolbar"><label class="city-search-field" for="cityCatalogSearch"><span aria-hidden="true">⌕</span><input id="cityCatalogSearch" type="search" placeholder="Найти свой город или историю..." autocomplete="off" aria-label="Поиск города или дела"></label><label class="city-catalog-sort" for="cityCatalogSort"><span>СОРТИРОВКА</span><select id="cityCatalogSort"><option value="number">По номеру дела</option><option value="name">По названию</option><option value="easy">По сложности: проще</option><option value="hard">По сложности: сложнее</option></select></label><span class="city-catalog-count" id="cityCatalogCount" aria-live="polite">НАЙДЕНО: 07</span></div>
 <div class="city-catalog-grid" id="cityCatalogGrid">
 <article class="city-catalog-card" data-city="novorossiysk" data-search="Новороссийск Невеста Семи ветров семь ветров невеста перевал порт легенда" data-difficulty="2" data-case="001">
- <div class="city-catalog-media"><img src="./assets/city-cover-novorossiysk-cinema-nov07.jpg" alt="Атмосферная иллюстрация: Невеста Семи ветров" loading="lazy"><span class="city-catalog-number">ДЕЛО №001</span></div>
- <div class="city-catalog-body"><div class="city-catalog-location">НОВОРОССИЙСК <span class="city-catalog-sep">/</span> <span>ДЕЛО ДОСТУПНО</span></div>
+ <div class="city-catalog-media"><img src="./assets/city-cover-novorossiysk-cinema-nov07.jpg" alt="Атмосферная иллюстрация: Невеста Семи ветров" loading="lazy"></div>
+ <div class="city-catalog-body"><div class="city-catalog-location"><span class="city-case-label">ДЕЛО №001</span> <span class="city-catalog-sep">/</span> НОВОРОССИЙСК <span class="city-catalog-sep">/</span> <span>ДЕЛО ДОСТУПНО</span></div>
  <h3>Невеста Семи ветров</h3><p>Легенда о невесте, перевал «Семь ветров», ночные снимки и следы осмотра.</p>
  <div class="city-catalog-metrics"><div><small>СЛОЖНОСТЬ</small><strong class="city-stars" aria-label="2 из 5">★★<em>★★★</em></strong><span>2/5</span></div><div><small>ВРЕМЯ</small><strong>~1 ч 40 мин</strong></div><div><small>УЛИКИ</small><strong>18</strong></div></div>
  <button class="action-red city-catalog-action" data-route="cases" aria-label="Открыть дело 001, Новороссийск">ОТКРЫТЬ ДЕЛО <span aria-hidden="true">↗</span></button></div></article>
 <article class="city-catalog-card" data-city="moscow" data-search="Москва Либерея. Пропавшая опись кремль либерея библиотека грозный архив" data-difficulty="4" data-case="002">
- <div class="city-catalog-media"><img src="./assets/city-cover-moscow-cinema-nov07.jpg" alt="Атмосферная иллюстрация: Либерея. Пропавшая опись" loading="lazy"><span class="city-catalog-number">ДЕЛО №002</span></div>
- <div class="city-catalog-body"><div class="city-catalog-location">МОСКВА <span class="city-catalog-sep">/</span> <span>ПОЛНАЯ ГЛАВА</span></div>
+ <div class="city-catalog-media"><img src="./assets/city-cover-moscow-cinema-nov07.jpg" alt="Атмосферная иллюстрация: Либерея. Пропавшая опись" loading="lazy"></div>
+ <div class="city-catalog-body"><div class="city-catalog-location"><span class="city-case-label">ДЕЛО №002</span> <span class="city-catalog-sep">/</span> МОСКВА <span class="city-catalog-sep">/</span> <span>ПОЛНАЯ ГЛАВА</span></div>
  <h3>Либерея. Пропавшая опись</h3><p>Поиски библиотеки Ивана Грозного, архив 1937 года и поддельная опись.</p>
  <div class="city-catalog-metrics"><div><small>СЛОЖНОСТЬ</small><strong class="city-stars" aria-label="4 из 5">★★★★<em>★</em></strong><span>4/5</span></div><div><small>ВРЕМЯ</small><strong>~2 ч 30 мин</strong></div><div><small>УЛИКИ</small><strong>36</strong></div></div>
  <button class="action-red city-catalog-action" data-route="moscow-case" aria-label="Открыть дело 002, Москва">ОТКРЫТЬ ДЕЛО <span aria-hidden="true">↗</span></button></div></article>
 <article class="city-catalog-card" data-city="spb" data-search="Санкт-Петербург Умирающий сфинкс питер петербург масоны сфинкс ложи елагин" data-difficulty="3" data-case="003">
- <div class="city-catalog-media"><img src="./assets/spb-city-cover-20261107.jpg" alt="Атмосферная иллюстрация: Умирающий сфинкс" loading="lazy"><span class="city-catalog-number">ДЕЛО №003</span></div>
- <div class="city-catalog-body"><div class="city-catalog-location">САНКТ-ПЕТЕРБУРГ <span class="city-catalog-sep">/</span> <span>ПРОЛОГ</span></div>
+ <div class="city-catalog-media"><img src="./assets/spb-city-cover-20261107.jpg" alt="Атмосферная иллюстрация: Умирающий сфинкс" loading="lazy"></div>
+ <div class="city-catalog-body"><div class="city-catalog-location"><span class="city-case-label">ДЕЛО №003</span> <span class="city-catalog-sep">/</span> САНКТ-ПЕТЕРБУРГ <span class="city-catalog-sep">/</span> <span>ПРОЛОГ</span></div>
  <h3>Умирающий сфинкс</h3><p>Масонские ложи, загадочные протоколы и исторические свидетельства.</p>
  <div class="city-catalog-metrics"><div><small>СЛОЖНОСТЬ</small><strong class="city-stars" aria-label="3 из 5">★★★<em>★★</em></strong><span>3/5</span></div><div><small>ВРЕМЯ</small><strong>45–60 мин</strong></div><div><small>УЛИКИ</small><strong>15</strong></div></div>
  <button class="action-red city-catalog-action" data-route="spb-case" aria-label="Открыть дело 003, Санкт-Петербург">ОТКРЫТЬ ДЕЛО <span aria-hidden="true">↗</span></button></div></article>
 <article class="city-catalog-card" data-city="ekaterinburg" data-search="Екатеринбург Подвал особого назначения уральский ипатьева романовы" data-difficulty="4" data-case="004">
- <div class="city-catalog-media"><img src="./assets/city-cover-ekaterinburg-case.jpg" alt="Атмосферная иллюстрация: Подвал особого назначения" loading="lazy"><span class="city-catalog-number">ДЕЛО №004</span></div>
- <div class="city-catalog-body"><div class="city-catalog-location">ЕКАТЕРИНБУРГ <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
+ <div class="city-catalog-media"><img src="./assets/city-cover-ekaterinburg-case.jpg" alt="Атмосферная иллюстрация: Подвал особого назначения" loading="lazy"></div>
+ <div class="city-catalog-body"><div class="city-catalog-location"><span class="city-case-label">ДЕЛО №004</span> <span class="city-catalog-sep">/</span> ЕКАТЕРИНБУРГ <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
  <h3>Подвал особого назначения</h3><p>Дом Ипатьева, утраченные планы и несоответствия в свидетельствах.</p>
  <div class="city-catalog-metrics"><div><small>СЛОЖНОСТЬ</small><strong class="city-stars" aria-label="4 из 5">★★★★<em>★</em></strong><span>4/5</span></div><div><small>ВРЕМЯ</small><strong>25–40 мин</strong></div><div><small>УЛИКИ</small><strong>8</strong></div></div>
  <a class="action-red city-catalog-action" href="./new-city-investigation.html?city=ekaterinburg" aria-label="Открыть дело 004, Екатеринбург">ОТКРЫТЬ ДЕЛО <span aria-hidden="true">↗</span></a></div></article>
 <article class="city-catalog-card" data-city="kazan" data-search="Казань Седьмой ярус Сююмбике татарстан сююмбике башня легенда" data-difficulty="3" data-case="005">
- <div class="city-catalog-media"><img src="./assets/city-cover-kazan-case.jpg" alt="Атмосферная иллюстрация: Седьмой ярус Сююмбике" loading="lazy"><span class="city-catalog-number">ДЕЛО №005</span></div>
- <div class="city-catalog-body"><div class="city-catalog-location">КАЗАНЬ <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
+ <div class="city-catalog-media"><img src="./assets/city-cover-kazan-case.jpg" alt="Атмосферная иллюстрация: Седьмой ярус Сююмбике" loading="lazy"></div>
+ <div class="city-catalog-body"><div class="city-catalog-location"><span class="city-case-label">ДЕЛО №005</span> <span class="city-catalog-sep">/</span> КАЗАНЬ <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
  <h3>Седьмой ярус Сююмбике</h3><p>Башня Сююмбике, загадка её датировки и семь архитектурных ярусов.</p>
  <div class="city-catalog-metrics"><div><small>СЛОЖНОСТЬ</small><strong class="city-stars" aria-label="3 из 5">★★★<em>★★</em></strong><span>3/5</span></div><div><small>ВРЕМЯ</small><strong>25–40 мин</strong></div><div><small>УЛИКИ</small><strong>8</strong></div></div>
  <a class="action-red city-catalog-action" href="./new-city-investigation.html?city=kazan" aria-label="Открыть дело 005, Казань">ОТКРЫТЬ ДЕЛО <span aria-hidden="true">↗</span></a></div></article>
 <article class="city-catalog-card" data-city="samara" data-search="Самара Объект 37 куйбышев сталин бункер" data-difficulty="4" data-case="006">
- <div class="city-catalog-media"><img src="./assets/city-cover-samara-case.jpg" alt="Атмосферная иллюстрация: Объект 37" loading="lazy"><span class="city-catalog-number">ДЕЛО №006</span></div>
- <div class="city-catalog-body"><div class="city-catalog-location">САМАРА <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
+ <div class="city-catalog-media"><img src="./assets/city-cover-samara-case.jpg" alt="Атмосферная иллюстрация: Объект 37" loading="lazy"></div>
+ <div class="city-catalog-body"><div class="city-catalog-location"><span class="city-case-label">ДЕЛО №006</span> <span class="city-catalog-sep">/</span> САМАРА <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
  <h3>Объект 37</h3><p>Секретный бункер, пропуска и инженерные схемы подземного объекта.</p>
  <div class="city-catalog-metrics"><div><small>СЛОЖНОСТЬ</small><strong class="city-stars" aria-label="4 из 5">★★★★<em>★</em></strong><span>4/5</span></div><div><small>ВРЕМЯ</small><strong>25–40 мин</strong></div><div><small>УЛИКИ</small><strong>8</strong></div></div>
  <a class="action-red city-catalog-action" href="./new-city-investigation.html?city=samara" aria-label="Открыть дело 006, Самара">ОТКРЫТЬ ДЕЛО <span aria-hidden="true">↗</span></a></div></article>
 <article class="city-catalog-card" data-city="kaliningrad" data-search="Калининград Янтарный след кенигсберг кёнигсберг янтарь комната" data-difficulty="5" data-case="007">
- <div class="city-catalog-media"><img src="./assets/city-cover-kaliningrad-case.jpg" alt="Атмосферная иллюстрация: Янтарный след" loading="lazy"><span class="city-catalog-number">ДЕЛО №007</span></div>
- <div class="city-catalog-body"><div class="city-catalog-location">КАЛИНИНГРАД <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
+ <div class="city-catalog-media"><img src="./assets/city-cover-kaliningrad-case.jpg" alt="Атмосферная иллюстрация: Янтарный след" loading="lazy"></div>
+ <div class="city-catalog-body"><div class="city-catalog-location"><span class="city-case-label">ДЕЛО №007</span> <span class="city-catalog-sep">/</span> КАЛИНИНГРАД <span class="city-catalog-sep">/</span> <span>ПЕРВАЯ ГЛАВА</span></div>
  <h3>Янтарный след</h3><p>Исчезновение Янтарной комнаты, накладные и ложные маршруты перевозки.</p>
  <div class="city-catalog-metrics"><div><small>СЛОЖНОСТЬ</small><strong class="city-stars" aria-label="5 из 5">★★★★★<em></em></strong><span>5/5</span></div><div><small>ВРЕМЯ</small><strong>25–40 мин</strong></div><div><small>УЛИКИ</small><strong>8</strong></div></div>
  <a class="action-red city-catalog-action" href="./new-city-investigation.html?city=kaliningrad" aria-label="Открыть дело 007, Калининград">ОТКРЫТЬ ДЕЛО <span aria-hidden="true">↗</span></a></div></article>
