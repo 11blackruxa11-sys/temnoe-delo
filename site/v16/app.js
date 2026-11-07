@@ -42,7 +42,7 @@ function openInspect(id){
  const c=C[id];if(!c)return;
  activeEvidenceId=id;
  const flipped=st.flipped.includes(id);
- const pictureNames={fabric:'ulika-fabric.jpg',lamp:'ulika-lamp.jpg',token:'ulika-token.jpg',antenna:'ulika-antenna.jpg',tracks:'ulika-tracks.jpg'};
+ const pictureNames={fabric:'ulika-fabric.jpg',lamp:'ulika-lamp.jpg',token:'ulika-token.jpg',antenna:'ulika-antenna.jpg',tracks:'ulika-tracks.jpg',ticket:'ulika-ticket.jpg'};
  const imageFile=pictureNames[id]||c.image;
  const imageFallback=c.image;
  const caseNo=String(Object.keys(C).indexOf(id)+1).padStart(3,'0');
