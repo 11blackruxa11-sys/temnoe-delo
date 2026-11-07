@@ -41,3 +41,39 @@
 .reverse-document{gap:2px}
 .reverse-footer{font-size:10px}
 @media(max-width:740px){.evidence-art .evidence-object{width:min(87%,400px);aspect-ratio:0.95}.reverse-title{font-size:15px;margin:5px 0}.reverse-document p{margin:4px 0 6px}.reverse-label{font-size:9px}.reverse-document{padding:9px}}
+
+
+/* Novorossiysk 18 individual evidence protocols: cinematic archive paper */
+.evidence-art.flip{min-height:610px;transition:min-height .3s ease}
+.evidence-art.flip .evidence-object{width:min(94%,445px);max-width:445px;aspect-ratio:.755}
+.evidence-object .face.back{padding:10px;border:8px solid #cbb895;background:#d3c19f;text-align:left}
+.protocol-sheet{color:#2d241d;position:relative;width:100%;height:100%;overflow:auto;box-sizing:border-box;display:flex;flex-direction:column;padding:17px 18px 12px;background:radial-gradient(ellipse at 10% 12%,#d0b9957c 0,transparent 46%),radial-gradient(ellipse at 92% 96%,#8c674a44,transparent 54%),repeating-linear-gradient(0deg,#bdab8e18 0,#e2d1af18 2px,#d3c09d20 4px),#e4d6b7;border:1px solid #796149;box-shadow:inset 0 0 23px #735b3440;font-family:Georgia,'Times New Roman',serif;line-height:1.3;cursor:pointer}
+.protocol-sheet:before{content:'';position:absolute;top:10px;left:9px;width:18px;height:42px;border:2px solid #796d5c;border-radius:12px;transform:rotate(-12deg);opacity:.68;pointer-events:none}
+.protocol-topline{display:flex;justify-content:space-between;gap:9px;border-bottom:1px solid #7b6955;padding:0 0 7px 18px;font:700 9px/1.25 'Courier New',monospace;letter-spacing:.03em}
+.protocol-heading{text-align:center;font:900 clamp(20px,2.4vw,29px)/1.12 Georgia,serif;letter-spacing:.015em;padding:11px 0 8px;border-bottom:2px solid #963b2f;text-shadow:.3px .3px #5d4638}
+.protocol-subtitle{margin:11px 0 13px;padding:7px 9px;background:#302d29;color:#f6e5c4;font:700 11px/1.35 'Courier New',monospace;letter-spacing:.055em;text-transform:uppercase}
+.protocol-table{display:grid;grid-template-columns:100px minmax(0,1fr);margin:0;border-top:1px solid #85745c;border-left:1px solid #85745c;font:12px/1.4 'Courier New',monospace}
+.protocol-table dt,.protocol-table dd{min-width:0;margin:0;padding:9px 8px;border-right:1px solid #85745c;border-bottom:1px solid #85745c;overflow-wrap:anywhere}
+.protocol-table dt{font-weight:bold;font-size:10px;background:#9b826824;letter-spacing:.025em}
+.protocol-table dd{font-size:11px;font-weight:600}
+.protocol-handwritten{position:relative;margin:13px 5px 8px;padding-left:13px;border-left:2px solid #a14d48;color:#233558;transform:rotate(-1deg)}
+.protocol-handwritten small{display:block;color:#704d46;font:700 9px/1.2 'Courier New',monospace;letter-spacing:.055em}
+.protocol-handwritten p{font:italic 15px/1.2 'Segoe Print','Comic Sans MS',cursive;margin:5px 0!important;color:#253d66!important}
+.protocol-stamp{align-self:flex-end;display:inline-block;transform:rotate(-9deg);border:3px double #a32c28;color:#a32c28;letter-spacing:.09em;font:900 14px/1.12 Georgia,serif;margin:5px 7px 7px;padding:5px 7px;opacity:.89}
+.protocol-signoff{margin-top:auto;display:grid;grid-template-columns:.9fr 1.1fr 1fr;border-top:1px solid #85745c;border-bottom:1px solid #85745c}
+.protocol-signoff>span{font:700 9px/1.35 'Courier New',monospace;padding:6px 3px;border-right:1px solid #85745c}
+.protocol-signoff>span:last-child{border-right:0}
+.protocol-signoff strong{display:block;font:italic 11px/1.2 Georgia,serif;color:#283b66;margin-top:5px}
+.protocol-signoff .protocol-signature{font:italic 17px/1 'Segoe Print','Comic Sans MS',cursive;transform:rotate(-5deg)}
+.protocol-disclaimer{padding-top:7px;font:italic 9px/1.25 Georgia,serif;color:#63564c;text-align:center}
+@media(max-width:740px){
+.evidence-art.flip{min-height:640px}
+.evidence-art.flip .evidence-object{width:min(95%,440px);aspect-ratio:.72}
+.protocol-sheet{padding:13px 12px 10px}
+.protocol-table{grid-template-columns:82px minmax(0,1fr)}
+.protocol-table dt,.protocol-table dd{padding:7px 6px}
+.protocol-table dd{font-size:10px}
+.protocol-handwritten p{font-size:13px}
+.protocol-heading{font-size:20px}
+.protocol-stamp{font-size:12px}
+}
