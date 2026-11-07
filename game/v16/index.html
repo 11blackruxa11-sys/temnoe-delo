@@ -244,5 +244,43 @@
 <section class="view play-view" id="view-play"><div class="playbar"><span>ТЁМНОЕ ДЕЛО / НОВОРОССИЙСК / ДЕЛО №001</span><button data-route="cases">← К ДОСЬЕ</button></div><iframe id="gameFrame" src="about:blank" class="gameframe" title="Интерактивное расследование: Невеста Семи ветров" allow="autoplay" loading="lazy"></iframe></section>
 </main>
 <footer class="site-footer" id="siteFooter"><div class="container footer-layout"><div class="footer-brand"><b>ТЁМНОЕ <em>ДЕЛО.</em></b><small>ИНТЕРАКТИВНЫЕ РАССЛЕДОВАНИЯ</small></div><div><p>Городские тайны. Настоящие улики. Твоя версия событий.</p><small>ПИЛОТНЫЙ ПРОЕКТ · 2026</small></div><button class="footer-up" id="backToTop">НАВЕРХ ↑</button></div></footer>
-<script src="./temnoe-final.js?v=37.1-spb-images" defer></script>
+<script src="./temnoe-final.js?v=38.0-city-index" defer></script>
+<script>
+(function(){
+  'use strict';
+  const input=document.getElementById('cityCatalogSearch');
+  const grid=document.getElementById('cityCatalogGrid');
+  const sorting=document.getElementById('cityCatalogSort');
+  const counter=document.getElementById('cityCatalogCount');
+  const empty=document.getElementById('cityCatalogEmpty');
+  const reset=document.getElementById('cityCatalogClear');
+  if(!input||!grid||!sorting||!counter||!empty||!reset)return;
+  const cards=Array.from(grid.querySelectorAll('.city-catalog-card'));
+  const normalize=(text)=>String(text||'').toLocaleLowerCase('ru-RU').replace(/ё/g,'е').normalize('NFC').trim();
+  function update(){
+    const query=normalize(input.value);
+    const order=sorting.value;
+    const sorted=cards.slice().sort((a,b)=>{
+      if(order==='name')return a.dataset.search.localeCompare(b.dataset.search,'ru');
+      if(order==='easy')return Number(a.dataset.difficulty)-Number(b.dataset.difficulty)||Number(a.dataset.case)-Number(b.dataset.case);
+      if(order==='hard')return Number(b.dataset.difficulty)-Number(a.dataset.difficulty)||Number(a.dataset.case)-Number(b.dataset.case);
+      return Number(a.dataset.case)-Number(b.dataset.case);
+    });
+    let count=0;
+    sorted.forEach(card=>{
+      const show=normalize(card.dataset.search).includes(query);
+      card.hidden=!show;
+      if(show)count++;
+      grid.appendChild(card);
+    });
+    counter.textContent='НАЙДЕНО: '+String(count).padStart(2,'0');
+    empty.hidden=count!==0;
+  }
+  input.addEventListener('input',update);
+  input.addEventListener('search',update);
+  sorting.addEventListener('change',update);
+  reset.addEventListener('click',()=>{input.value='';sorting.value='number';update();input.focus()});
+  update();
+})();
+</script>
 </body></html>
