@@ -105,3 +105,9 @@
  #view-cities .cities-hero-scene .inner-dark,#view-about .about-hero-scene .inner-dark,#view-submit .author-hero-scene .inner-dark{background:linear-gradient(90deg,#0b0b0bf6,#0b0c0cdd 63%,#0b0c0c75 100%),linear-gradient(0deg,#08090ac9,transparent)}
  #view-submit .author-hero-scene .inner-hero-content{padding-block:68px}
 }
+
+/* Saint Petersburg immersive game frame: fixes 150px iframe and large blank viewport */
+#view-spb.active{display:flex;flex-direction:column;height:calc(100dvh - 72px);min-height:620px;overflow:hidden}
+#view-spb .playbar{flex:0 0 46px}
+#view-spb .gameframe{display:block;flex:1 1 auto;height:auto;min-height:0;width:100%;border:0;background:#0d1518}
+@media(max-width:740px){#view-spb.active{min-height:550px;height:calc(100dvh - 72px)}#view-spb .playbar{padding:8px 11px}#view-spb .playbar span{font-size:8px}}
